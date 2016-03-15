@@ -21,17 +21,26 @@
             <table>
                 <tr>
                     <td>
-                         ${MonPersonnage.nom}
+                        ${MonPersonnage.nom}<br>
                          ${MonPersonnage.nbDePoints}
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        Ressources non utilisees :<br>
+                        Carottes : ${MonPersonnage.ressource.ressourceCarotte} <br>
+                        Bles :  ${MonPersonnage.ressource.ressourceBle} <br>
+                        Fromages : ${MonPersonnage.ressource.ressourceFromage}<br>
+                        Chevres : ${MonPersonnage.ressource.ressourceChevre}
 
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        Ressources en cours : <br>
+                        Carottes plantees :${mesCarottesPlantees}<br>
+                        Bles plantes : ${mesBlesPlantes}<br>
+                        
 
                     </td>
                 </tr>
