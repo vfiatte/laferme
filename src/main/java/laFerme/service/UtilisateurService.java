@@ -12,8 +12,9 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author admin
  */
+
 public interface UtilisateurService extends CrudRepository<Utilisateur, Long>{
-    
     public Utilisateur findOneByLogin(String s);
+    public Utilisateur findOneByEmail(String s);
     
 }

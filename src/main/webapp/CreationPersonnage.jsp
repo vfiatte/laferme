@@ -19,7 +19,7 @@
         <c:import url="_MENU.jsp"/>
         <div class="contenu">
             <h1>Creer Votre Personnage : </h1>
-            <input type="text" name="Nom"/>
+            <input type="text" name="nom"/>
             <a href="creerunpersonnage"><button>Creer</button></a>
         </div>
         <c:import url="_PIED.jsp"/>

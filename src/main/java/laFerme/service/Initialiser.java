@@ -47,7 +47,8 @@ public class Initialiser {
         personnage.setNom(nom);
         personnage.setUtilisateur(u);
         u.getListepersonnages().add(personnage);
-        utilisateurService.save(u);
+        personnageService.save(personnage);
+        
         Ressource ressource = new Ressource();
         
         for (int i = 1; i <= 3; i++) {
@@ -61,9 +62,6 @@ public class Initialiser {
             personnage.getListeble().add(ble);
             bleService.save(ble);
             
-            personnageService.save(personnage);
-            
-            
         }
         
         ressource.setRessourceBle(3);
@@ -73,7 +71,8 @@ public class Initialiser {
         ressource.setPersonnage(personnage);
         personnage.setRessource(ressource);
         ressourceService.save(ressource);
-        personnageService.save(personnage);
+//        personnageService.save(personnage);
+//        utilisateurService.save(u);
         
 
     }

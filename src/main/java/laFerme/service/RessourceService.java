@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
  *
  * @author admin
  */
-@Service
 public interface RessourceService extends CrudRepository<Ressource, Long>{
     
 }

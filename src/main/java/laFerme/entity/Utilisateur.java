@@ -33,6 +33,7 @@ public class Utilisateur implements Serializable {
     private String prenom;
     private String login;
     private String mdp;
+    private String email;
 
     public Utilisateur() {
     }
@@ -45,6 +46,15 @@ public class Utilisateur implements Serializable {
         this.prenom = prenom;
         this.login = login;
         this.mdp = mdp;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     
