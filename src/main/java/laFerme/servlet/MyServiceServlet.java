@@ -27,6 +27,6 @@ public class MyServiceServlet extends AutowireServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        System.out.println( "*** Nombre de records: " + service.count() );
+        
     }
 }

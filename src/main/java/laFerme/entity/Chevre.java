@@ -43,7 +43,7 @@ public class Chevre implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNaissance;
     
-    private EtatChevreEnumeration Etat;
+    private EtatChevreEnumeration etat;
 
     public Chevre() {
     }
@@ -52,7 +52,7 @@ public class Chevre implements Serializable {
         this.id = id;
         this.dateFromage = dateFromage;
         this.dateNaissance = dateNaissance;
-        this.Etat = DISPONIBLE;
+        this.etat = DISPONIBLE;
     }
 
    
@@ -62,11 +62,11 @@ public class Chevre implements Serializable {
     }
 
     public EtatChevreEnumeration getEtat() {
-        return Etat;
+        return etat;
     }
 
-    public void setEtat(EtatChevreEnumeration Etat) {
-        this.Etat = Etat;
+    public void setEtat(EtatChevreEnumeration etat) {
+        this.etat = etat;
     }
     
     

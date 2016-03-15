@@ -53,7 +53,9 @@ public class Personnage implements Serializable {
     private String nom;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFromage;
-
+    private int nbDePoints;
+    
+    
     public Personnage() {
     }
 
@@ -63,6 +65,16 @@ public class Personnage implements Serializable {
         this.dateFromage = dateFromage;
     }
 
+    public Integer getNbDePoints() {
+        return nbDePoints;
+    }
+
+    public void setNbDePoints(Integer nbDePoints) {
+        this.nbDePoints = nbDePoints;
+    }
+
+    
+    
     public Ressource getRessource() {
         return ressource;
     }

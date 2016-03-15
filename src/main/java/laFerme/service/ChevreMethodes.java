@@ -29,40 +29,37 @@ public class ChevreMethodes {
     PersonnageService personnageService;
     @Autowired
     FromageService fromageService;
+    @Autowired
+    RessourceService ressourceService;
 
-    public void NaissanceChevre(Personnage p) {
+    public void AccouplementChevre(Personnage p) {
 
         GregorianCalendar ajd = new GregorianCalendar();
 
         int taille = p.getListeChevre().size();
-        if (taille > 1) {
-            for (Chevre chevre : p.getListeChevre()) {
-                if (chevre.getEtat()==EtatChevreEnumeration.DISPONIBLE) {
-                    chevre.setEtat(EtatChevreEnumeration.ENCEINTE);
-                    chevre.setDateNaissance(ajd.getTime());
-                    chevreService.save(chevre);
-                    return;
-                }
-            }
-
-        }
-    }
-
-    public void NourrirChevre(Personnage p) {
-
-        GregorianCalendar date = new GregorianCalendar();
-        GregorianCalendar dateFromage = new GregorianCalendar();
-
-        List<Chevre> listeChevre = p.getListeChevre();
-        for (Chevre chevre : listeChevre) {
-            dateFromage.setTime(chevre.getDateFromage());
-            if (date.equals(dateFromage)) {
-                p.getFromage().setQuantite(p.getFromage().getQuantite() + 1L);
-
+        List<Chevre> listeChevre = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        if (listeChevre.size() > 1) {
+            for (Chevre chevre : listeChevre) {
+                chevre.setEtat(EtatChevreEnumeration.ENCEINTE);
+                chevre.setDateNaissance(ajd.getTime());
+                chevreService.save(chevre);
+                return;
             }
         }
 
     }
 
+    public void NourrirChevre(Personnage p, Chevre c) {
+
+        GregorianCalendar ajd = new GregorianCalendar();
+
+        if (p.getRessource().getRessourceBle() >= 1) {
+            p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() - 1);
+            c.setDateManger(ajd.getTime());
+            ressourceService.save(p.getRessource());
+            chevreService.save(c);
+        }
+
+    }
 
 }

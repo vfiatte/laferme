@@ -16,5 +16,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ChevreService extends CrudRepository<Chevre, Long>{
     public List<Chevre> findAllByEtatAndPersonnageId(EtatChevreEnumeration etat, Long id);
-    
+    public List<Chevre> findAllByPersonnageIdOrderByDateManger(Long id);
 }
