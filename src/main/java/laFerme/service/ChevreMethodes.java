@@ -12,6 +12,7 @@ import laFerme.entity.Chevre;
 import laFerme.entity.Fromage;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
+import laFerme.enumeration.EtatChevreEnumeration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class ChevreMethodes {
         int taille = p.getListeChevre().size();
         if (taille > 1) {
             for (Chevre chevre : p.getListeChevre()) {
-                if (chevre.getEtat(EtatChevreEnumeration.DISPONIBLE)) {
+                if (chevre.getEtat()==EtatChevreEnumeration.DISPONIBLE) {
                     chevre.setEtat(EtatChevreEnumeration.ENCEINTE);
                     chevre.setDateNaissance(ajd.getTime());
                     chevreService.save(chevre);
@@ -63,8 +64,5 @@ public class ChevreMethodes {
 
     }
 
-    public void NourrirChevre() {
-
-    }
 
 }

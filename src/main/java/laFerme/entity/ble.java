@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,8 +31,9 @@ public class ble implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private EtatEnumeration etat;
-    private Date datePlantation = null;
+    private EtatEnumeration etat = EtatEnumeration.NONPLANTE;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datePlantation = new Date();
 
     public ble() {
     }
