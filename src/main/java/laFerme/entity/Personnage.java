@@ -30,19 +30,22 @@ public class Personnage implements Serializable {
     @ManyToOne
     @JoinColumn(name = "UTILISATEUR_ID")
     private Utilisateur utilisateur;
-    
+
     @OneToMany(mappedBy = "personnage")
     List<Carotte> listeCarotte = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "personnage")
     List<ble> listeble = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "personnage")
     List<Chevre> listeChevre = new ArrayList<>();
-    
+
     @OneToOne(mappedBy = "personnage")
     private Fromage fromage;
-    
+
+    @OneToOne(mappedBy = "personnage")
+    private Ressource ressource;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,8 +54,6 @@ public class Personnage implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFromage;
 
-    
-    
     public Personnage() {
     }
 
@@ -62,6 +63,16 @@ public class Personnage implements Serializable {
         this.dateFromage = dateFromage;
     }
 
+    public Ressource getRessource() {
+        return ressource;
+    }
+
+    public void setRessource(Ressource ressource) {
+        this.ressource = ressource;
+    }
+
+    
+    
     public Date getDateFromage() {
         return dateFromage;
     }
@@ -70,7 +81,6 @@ public class Personnage implements Serializable {
         this.dateFromage = dateFromage;
     }
 
-    
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
@@ -118,10 +128,7 @@ public class Personnage implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -154,5 +161,5 @@ public class Personnage implements Serializable {
     public String toString() {
         return "laFerme.entity.Personnage[ id=" + id + " ]";
     }
-    
+
 }

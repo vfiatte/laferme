@@ -21,50 +21,50 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ChevreMethodes {
-    
+
     @Autowired
     ChevreService chevreService;
     @Autowired
     PersonnageService personnageService;
     @Autowired
     FromageService fromageService;
-    
-    
-    public void NaissanceChevre(Personnage p){
-        
+
+    public void NaissanceChevre(Personnage p) {
+
+        GregorianCalendar ajd = new GregorianCalendar();
+
         int taille = p.getListeChevre().size();
-        if (taille> 1){
-            int nombreCouple = taille/2;
-            for (int i=1; i<=nombreCouple;i++ ){
-                Chevre c = new Chevre();
-                c.setPersonnage(p);
-                p.getListeChevre().add(c);
-                
-                chevreService.save(c);
-                
+        if (taille > 1) {
+            for (Chevre chevre : p.getListeChevre()) {
+                if (chevre.getEtat(EtatChevreEnumeration.DISPONIBLE)) {
+                    chevre.setEtat(EtatChevreEnumeration.ENCEINTE);
+                    chevre.setDateNaissance(ajd.getTime());
+                    chevreService.save(chevre);
+                    return;
+                }
             }
+
         }
     }
-    
-    
-    public void FaireDuFromage(Personnage p){
-        
+
+    public void NourrirChevre(Personnage p) {
+
         GregorianCalendar date = new GregorianCalendar();
         GregorianCalendar dateFromage = new GregorianCalendar();
-        
+
         List<Chevre> listeChevre = p.getListeChevre();
-        for (Chevre chevre : listeChevre){
+        for (Chevre chevre : listeChevre) {
             dateFromage.setTime(chevre.getDateFromage());
-            if (date.equals(dateFromage)){
-                p.getFromage().setQuantite(p.getFromage().getQuantite()+1L);
-                
+            if (date.equals(dateFromage)) {
+                p.getFromage().setQuantite(p.getFromage().getQuantite() + 1L);
+
             }
         }
-        
+
     }
-    
-    public void NourrirChevre(){
-        
+
+    public void NourrirChevre() {
+
     }
-    
+
 }
