@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import laFerme.enumeration.EtatChevreEnumeration;
+import static laFerme.enumeration.EtatChevreEnumeration.DISPONIBLE;
 
 /**
  *
@@ -37,15 +39,43 @@ public class Chevre implements Serializable {
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFromage;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateNaissance;
+    
+    private EtatChevreEnumeration Etat;
 
     public Chevre() {
     }
 
-    public Chevre(Long id, Date dateManger, Date dateFromage) {
+    public Chevre(Long id, Date dateFromage, Date dateNaissance, EtatChevreEnumeration Etat) {
         this.id = id;
-        this.dateManger = dateManger;
         this.dateFromage = dateFromage;
+        this.dateNaissance = dateNaissance;
+        this.Etat = DISPONIBLE;
     }
+
+   
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public EtatChevreEnumeration getEtat() {
+        return Etat;
+    }
+
+    public void setEtat(EtatChevreEnumeration Etat) {
+        this.Etat = Etat;
+    }
+    
+    
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+    
+    
 
     public Date getDateManger() {
         return dateManger;

@@ -7,12 +7,12 @@ package laFerme.spring;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 
 /**
@@ -24,6 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 //@EnableAutoConfiguration
 @ComponentScan(basePackages = "streaming") 
 @EnableJpaRepositories(basePackages = "streaming")
+@EnableScheduling
 public class SpringConfig {
 
     @Bean
@@ -35,7 +36,7 @@ public class SpringConfig {
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
-        return Persistence.createEntityManagerFactory("streaming_PU");
+        return Persistence.createEntityManagerFactory("ferme_PU");
     }
 
 }

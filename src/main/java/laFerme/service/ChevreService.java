@@ -5,7 +5,9 @@
  */
 package laFerme.service;
 
+import java.util.List;
 import laFerme.entity.Chevre;
+import laFerme.enumeration.EtatChevreEnumeration;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,6 +15,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface ChevreService extends CrudRepository<Chevre, Long>{
-    
+    public List<Chevre> findAllByEtatAndPersonnageId(EtatChevreEnumeration etat, Long id);
     
 }
