@@ -14,4 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ChevreService extends CrudRepository<Chevre, Long>{
     
+    
 }
