@@ -6,6 +6,7 @@
 package laFerme.service;
 
 import java.util.List;
+import laFerme.entity.Carotte;
 import laFerme.entity.EtatEnumeration;
 import laFerme.entity.ble;
 import org.springframework.data.repository.CrudRepository;
@@ -15,5 +16,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface BleService extends CrudRepository<ble, Long>{
-    public List<ble> findAllByEtat(EtatEnumeration etat);
+    public List<ble> findAllByEtatAndPersonnageId(EtatEnumeration etat, Long id);
 }

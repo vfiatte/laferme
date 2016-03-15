@@ -16,5 +16,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface CarotteService extends CrudRepository<Carotte, Long>{
-     public List<Carotte> findAllByEtat(EtatEnumeration etat);
+     public List<Carotte> findAllByEtatAndPersonnageId(EtatEnumeration etat, Long id);
 }

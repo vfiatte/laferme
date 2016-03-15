@@ -23,6 +23,9 @@ public class CarotteMethode {
 
     @Autowired
     CarotteService carotteService;
+    
+    @Autowired
+    RessourceService ressourceService;
 
     public void planterCarotte(Personnage p) {
         GregorianCalendar ajd = new GregorianCalendar();
@@ -33,6 +36,7 @@ public class CarotteMethode {
             Carotte c = listeCarotte.get(listeCarotte.size() - 1);
             c.setEtat(EtatEnumeration.PLANTE);
             c.setDatePlantation(ajd.getTime());
+            p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
         }
 
 
