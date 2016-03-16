@@ -87,6 +87,10 @@
                                     ${monPersonnage.ressource.ressourceChevre}
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <a href="BanqueServlet"><button>Acceder au marche</button></a>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -127,7 +131,7 @@
                         </tbody>
                     </table>
                 </td>
-                <td class="tableaucentrale"> 
+                <td class="tableMilieu"> 
                     <c:choose>
                         <c:when test="${valeur==1}">
                             <table>
@@ -145,13 +149,13 @@
                                         <td>
                                             Nourrir ?
                                         </td>
-                                        
+
                                     </tr>
                                 </thead>
                                 <c:forEach items="${mesChevres}" var="maChevre">
                                     <tr>
                                         <td>
-                                            Chevre n° ${maChevre.id}
+                                            Chevre n ${maChevre.id}
                                         </td>
                                         <td>
                                             ${maChevre.etat}
@@ -160,125 +164,163 @@
                                             ${maChevre.dateManger}
                                         </td>
                                         <td>
-                                            <input type="radio" name="nourirChevre" value="nourir">
+                                            <input type="checkbox" name="nourirChevre" value="nourir">
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </table>
                         </c:when>
-                    </c:choose>
-                </td>==============================================================================
-                <td>
-                    <form method="post" action="nourirPersonnageServlet">
-                        <table class="tabledroite">
-                            <thead>
-                                <tr>
-                                    <td colspan="3">
-                                        Nourrir ${monPersonnage.nom}
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <c:when test="${valeur==2}">
+                            <table>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x3)</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x2)</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('fromage')\" value="fromage">Fromage (x2)</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('chevre')\" value="chevre">Chevre (x1)</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">
-                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                                        <input type="submit">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                    <br><br>
-
-                    <form method="get" action="ListerChevreServlet">
-                        <table class="tabledroite">
-                            <thead>
-                                <tr>
-                                    <td>
-                                        Vos chevres
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                                        <input type="submit">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                    <br><br>
-                    <form method="post" action="planterRessourcesServlet">
-                        <table class="tabledroite">
-                            <thead>
-                                <tr>
-                                    <td colspan="3">
-                                        Travaillez la terre !
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="2">
-                                        Quelles ressources souhaitez vous planter ?<br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label><input type="radio" name="planteRessource" onclick=\"getAnswer('ble')\" value="ble">Ble</label><br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label><input type="radio" name="planteRessource" onclick=\"getAnswer('carotte')\" value="carotte">Carotte</label><br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Combien ?
-                                        <select name="quantite">
-                                            <c:forEach var="i" begin="1" end="50">
+                                        <select name="quantiteble">
+                                            <c:forEach var="i" begin="0" end="50">
                                                 <option>
                                                     ${i}
                                                 </option>
                                             </c:forEach>
                                         </select>
+                                        <img src="image/icon_epi.png" alt=""/>
                                     </td>
+                                    <td>
+                                        <select name="quantiteCarotte">
+                                            <c:forEach var="i" begin="0" end="50">
+                                                <option>
+                                                    ${i}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                        <img src="image/carrots_24.png" alt=""/>
+                                    </td>
+                                    <td>
+                                        <select name="quantiteChevre">
+                                            <c:forEach var="i" begin="0" end="50">
+                                                <option>
+                                                    ${i}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                        <img src="image/._des-animaux-chevre-icone-8566-128.png" alt=""/>
+                                    </td>
+                                    
                                 </tr>
+                            </table>            
+
+                        </c:when>
+                    </c:choose>
+                </td><br>
+            <td>
+                <form method="post" action="nourirPersonnageServlet">
+                    <table class="tabledroite">
+                        <thead>
+                            <tr>
+                                <td colspan="3">
+                                    Nourrir ${monPersonnage.nom}
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x3)</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x2)</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('fromage')\" value="fromage">Fromage (x2)</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('chevre')\" value="chevre">Chevre (x1)</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                    <input type="submit">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <br><br>
+
+                <form method="get" action="ListerChevreServlet">
+                    <table class="tabledroite">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Vos chevres
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                    <input type="submit">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <br><br>
+                <form method="post" action="planterRessourcesServlet">
+                    <table class="tabledroite">
+                        <thead>
+                            <tr>
+                                <td colspan="3">
+                                    Travaillez la terre !
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    Quelles ressources souhaitez vous planter ?<br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="planteRessource" onclick=\"getAnswer('ble')\" value="ble">Ble</label><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="radio" name="planteRessource" onclick=\"getAnswer('carotte')\" value="carotte">Carotte</label><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Combien ?
+                                    <select name="quantite">
+                                        <c:forEach var="i" begin="1" end="50">
+                                            <option>
+                                                ${i}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                            </tr>
 
 
-                                <tr>
-                                    <td colspan="2">
-                                        <input type="hidden" name="idPersonnage2" value="${monPersonnage.id}">
-                                        <input type="submit">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </body>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                    <input type="submit">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
 </html>

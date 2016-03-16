@@ -14,4 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PersonnageService extends CrudRepository<Personnage, Long>{
     public Personnage findOneByNom(String s);
+    
 }

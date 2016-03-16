@@ -40,7 +40,7 @@ public class ListerChevreServlet extends AutowireServlet {
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         Personnage p = personnageService.findOne(id);
         req.setAttribute("valeur", "1");
-        List<Chevre> listeChevres = (List<Chevre>) p.getListeChevre();
+        List<Chevre> listeChevres = chevreService.findAllByPersonnageId(id);
         req.setAttribute("titre", "Votre troupeau de chevres");
         req.setAttribute("mesChevres", listeChevres);
         req.getRequestDispatcher("passerparacceuil").include(req, resp);

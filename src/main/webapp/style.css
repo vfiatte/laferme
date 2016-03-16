@@ -32,6 +32,18 @@ img{
     vertical-align:top;
 }
 
+.tableMilieu{
+    border-style: solid;
+    background-color: #7dbaab;
+    border-color: green;
+    border-color: #145344;
+    width: 1050px;
+    vertical-align: top;
+    padding-left: 23%;
+    opacity: 0.7;
+    
+}
+
 body{
     background-image: url(image/maxresdefault.jpg);
     background-size: 100%;
