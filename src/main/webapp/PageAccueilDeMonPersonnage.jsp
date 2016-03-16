@@ -1,7 +1,7 @@
 <%-- 
-    Document   : PageAccueilDeMonPersonnage
-    Created on : 15 mars 2016, 14:09:12
-    Author     : admin
+    Document   : PagePrincipale
+    Created on : 15 mars 2016, 18:29:03
+    Author     : Valentin
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,42 +10,232 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Streaming</title>
-        <c:import url="_CSS.jsp"/>
+        <title>JSP Page</title>
+        <c:import url = "_CSS.jsp"/>
     </head>
     <body>
-        <c:import url="_TITRE.jsp"/> 
-        <c:import url="_MENU.jsp"/>
-        <div class="contenu">
-            <h1> A vous de jouer ! </h1>
-            <table>
-                <tr>
-                    <td>
-                        ${MonPersonnage.nom}<br>
-                         ${MonPersonnage.nbDePoints}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ressources non utilisees :<br>
-                        Carottes : ${MonPersonnage.ressource.ressourceCarotte} <br>
-                        Bles :  ${MonPersonnage.ressource.ressourceBle} <br>
-                        Fromages : ${MonPersonnage.ressource.ressourceFromage}<br>
-                        Chevres : ${MonPersonnage.ressource.ressourceChevre}
+        <table class="vertical">
+            <tr>
+                <td></td>
+                <td>
+                    <div class="titre">Bienvenu dans votre ferme, à vous de jouer, fermier en herbe !</div><br><br>
+                </td> 
+                <td></td>
+            </tr>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ressources en cours : <br>
-                        Carottes plantees :${mesCarottesPlantees}<br>
-                        Bles plantes : ${mesBlesPlantes}<br>
-                        
+            <tr>
+                <td>
+                    <table class="tablegauche">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <img  src="image/fermier.png" alt=""/>
+                                    ${monPersonnage.nom}
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Points : 
+                                </td>
+                                <td>
+                                    ${monPersonnage.nbDePoints}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <table class="tablegauche">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    Mes ressources disponibles
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="image/icon_epi.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${monPersonnage.ressource.ressourceBle}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="image/carrots_24.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${monPersonnage.ressource.ressourceCarotte}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="image/cheese.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${monPersonnage.ressource.ressourceFromage}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="image/des-animaux-chevre-icone-8566-128.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${monPersonnage.ressource.ressourceChevre}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <c:import url="_PIED.jsp"/>
+                    <br><br>
+                    <table class="tablegauche">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    Mes ressources occupées
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="image/icon_epi.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${mesBlePlantes}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="image/carrots_24.png" alt=""/>
+                                </td>
+                                <td>
+                                    ${mesCarottesPlantees}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="image/cheese.png" alt=""/>
+                                </td>
+                                <td>
+                                    ressource.fromage
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="tableaucentrale">////////////////////////////////////////////////////</td>
+                <td>
+                    <form method="post" action="nourirPersonnageServlet">
+                        <table class="tabledroite">
+                            <thead>
+                                <tr>
+                                    <td colspan="3">
+                                        Nourrir ${monPersonnage.nom}
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="typeNouriture" value="ble">Ble (x3)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="typeNouriture" value="carotte">Carotte (x2)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="typeNouriture" value="fromage">Fromage (x2)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="typeNouriture" value="chevre">Chevre (x1)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <input type="submit">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <br><br>
+
+                    <form method="get" action="listerChevres">
+                        <table class="tabledroite">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Vos chevres
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="submit">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <br><br>
+                    <form method="post" action="planterRessourcesServlet">
+                        <table class="tabledroite">
+                            <thead>
+                                <tr>
+                                    <td colspan="3">
+                                        Travaillez la terre !
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        Quelles ressources souhaitez vous planter ?<br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="planteRessource" value="ble">Ble</label><br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label><input type="radio" name="planteRessource" value="carotte">Carotte</label><br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Combien ?
+                                        <select>
+                                            <c:forEach var="i" begin="1" end="50">
+                                                <option>
+                                                    ${i}
+                                                </option>
+                                            </c:forEach>
+                                        </select>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="submit">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
