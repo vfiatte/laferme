@@ -21,7 +21,7 @@
             <h1>Creer Votre Personnage : </h1>
             <input type="text" name="nom"/>
             <a href="creerunpersonnage"><button>Creer</button></a>
-            <a href="passerparacceuil"><button>${personnage}</button></a>
+            <a href="passerparacceuil">${personnage}</a>
         </div>
         <c:import url="_PIED.jsp"/>
     </body>

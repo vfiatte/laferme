@@ -27,7 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author admin
  */
-@WebServlet(name = "PasserAlAccueil", urlPatterns = {"/passerparlaccueil"})
+@WebServlet(name = "PasserAlAccueil", urlPatterns = {"/passerparacceuil"})
 public class PasserAlAccueil extends AutowireServlet {
 
     @Autowired
