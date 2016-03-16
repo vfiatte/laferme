@@ -58,9 +58,8 @@ public class NourrirPersonnage {
         if (c.equals(Carotte.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
                 List<Carotte> listCarotte = p.getListeCarotte();
-                System.out.println(listCarotte.size());
-                Carotte random = listCarotte.get(new Random().nextInt(listCarotte.size()));
-                carotteService.delete(random);
+                Carotte carotte = listCarotte.get(listCarotte.size()-1);
+                carotteService.delete(carotte);
             }
             p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - nbaSupprimer);
 
@@ -68,8 +67,8 @@ public class NourrirPersonnage {
         if (c.equals(ble.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
                 List<ble> listBle = p.getListeble();
-                ble random = listBle.get(new Random().nextInt(listBle.size()));
-                bleService.delete(random);
+                ble blee = listBle.get(listBle.size()-1);
+                bleService.delete(blee);
             }
             p.getRessource().setRessourceBle(p.getRessource().getRessourceBle()- nbaSupprimer);
 
@@ -77,8 +76,8 @@ public class NourrirPersonnage {
         if (c.equals(Chevre.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
                 List<Chevre> listChevre = p.getListeChevre();
-                Chevre random = listChevre.get(new Random().nextInt(listChevre.size()));
-                chevreService.delete(random);
+                Chevre chevre = listChevre.get(listChevre.size()-1);
+                chevreService.delete(chevre);
             }
             p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- nbaSupprimer);
 

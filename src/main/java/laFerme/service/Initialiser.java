@@ -56,14 +56,17 @@ public class Initialiser {
 
         for (int i = 1; i <= 3; i++) {
             Carotte carotte = new Carotte();
-            carotte.setPersonnage(personnage);
-            personnage.getListeCarotte().add(carotte);
+            Personnage personnage2 = u2.getListepersonnages().get(0);
+            carotte.setPersonnage(personnage2);
+            personnage2.getListeCarotte().add(carotte);
+            personnageService.save(personnage2);
             carotteService.save(carotte);
 
             ble ble = new ble();
-            ble.setPersonnage(personnage);
-            personnage.getListeble().add(ble);
-            personnageService.save(personnage);
+            Personnage personnage3 = u2.getListepersonnages().get(0);
+            ble.setPersonnage(personnage3);
+            personnage3.getListeble().add(ble);
+            personnageService.save(personnage3);
             bleService.save(ble);
 
         }
