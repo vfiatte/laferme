@@ -42,9 +42,9 @@ public class NourrirPersonnage {
 
         Map<Class, Integer> mapNutrition = new HashMap();
         mapNutrition.put(Chevre.class, 1);
-        mapNutrition.put(Fromage.class, 2);
-        mapNutrition.put(Carotte.class, 3);
-        mapNutrition.put(ble.class, 4);
+        mapNutrition.put(Fromage.class, 1);
+        mapNutrition.put(Carotte.class, 2);
+        mapNutrition.put(ble.class, 3);
         return mapNutrition;
 
     }

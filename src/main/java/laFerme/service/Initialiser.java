@@ -46,27 +46,20 @@ public class Initialiser {
         Personnage personnage = new Personnage();
         personnage.setNom(nom);
         personnage.setUtilisateur(u);
-//        u.getListepersonnages().add(personnage);
-        Utilisateur u2 = u;
-        u2.getListepersonnages().add(personnage);
-        utilisateurService.save(u2);
+        u.getListepersonnages().add(personnage);
         personnageService.save(personnage);
 
         Ressource ressource = new Ressource();
 
         for (int i = 1; i <= 3; i++) {
             Carotte carotte = new Carotte();
-            Personnage personnage2 = u2.getListepersonnages().get(0);
-            carotte.setPersonnage(personnage2);
-            personnage2.getListeCarotte().add(carotte);
-            personnageService.save(personnage2);
+            carotte.setPersonnage(personnage);
+            personnage.getListeCarotte().add(carotte);
             carotteService.save(carotte);
 
             ble ble = new ble();
-            Personnage personnage3 = u2.getListepersonnages().get(0);
-            ble.setPersonnage(personnage3);
-            personnage3.getListeble().add(ble);
-            personnageService.save(personnage3);
+            ble.setPersonnage(personnage);
+            personnage.getListeble().add(ble);
             bleService.save(ble);
 
         }
@@ -80,6 +73,11 @@ public class Initialiser {
         ressourceService.save(ressource);
 //        personnageService.save(personnage);
 //        utilisateurService.save(u);
+for(Carotte carotte : personnage.getListeCarotte()){
+    System.out.println(carotte.getId());
+}
+
+
 
     }
 
