@@ -22,8 +22,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 //@SpringBootApplication
 //@EnableAutoConfiguration
-@ComponentScan(basePackages = "streaming") 
-@EnableJpaRepositories(basePackages = "streaming")
+@ComponentScan(basePackages = "laFerme") 
+@EnableJpaRepositories(basePackages = "laFerme")
 @EnableScheduling
 public class SpringConfig {
 
