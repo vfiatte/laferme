@@ -19,9 +19,24 @@
         <c:import url="_MENU.jsp"/>
         <div class="contenu">
             <h1>Creer Votre Personnage : </h1>
-            <input type="text" name="nom"/>
-            <a href="creerunpersonnage"><button>Creer</button></a>
-            <a href="passerparacceuil">${personnage}</a>
+            <form method="post" action="creerunpersonnage">
+                <input type="text" name="nom"/>
+                <input type="submit">
+            </form>
+            ${personnage}
+            <c:forEach items="${mesPersonnage}" var="monPersonnage">
+                <table>
+                    <tr>
+                        <td>
+                            ${monPersonnage.nom}
+                            
+                        </td>
+                        <td>
+                            <a href="passerparacceuil?idPersonnage=${monPersonnage.id}">Aller a sa ferme</a>
+                        </td>
+                    </tr>
+                </table>
+            </c:forEach>
         </div>
         <c:import url="_PIED.jsp"/>
     </body>

@@ -184,6 +184,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
+                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                                         <input type="submit">
                                     </td>
                                 </tr>

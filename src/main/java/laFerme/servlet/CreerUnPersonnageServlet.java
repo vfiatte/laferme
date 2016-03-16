@@ -6,22 +6,21 @@
 package laFerme.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import laFerme.entity.Carotte;
-import laFerme.entity.Chevre;
 import laFerme.entity.EtatEnumeration;
+import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
 import laFerme.service.BleService;
 import laFerme.service.CarotteService;
 import laFerme.service.ConfigService;
 import laFerme.service.Initialiser;
+import laFerme.service.PersonnageService;
 import laFerme.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,19 +39,26 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
     CarotteService carotteService;
     @Autowired
     BleService bleService;
+    
+    @Autowired
+    PersonnageService personnageService;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Utilisateur u = configService.recupererUtilisateur(req);
 
         String nom = req.getParameter("nom");
         init.CreationInitialisation(u, nom);
-        req.setAttribute("monPersonnage", u.getListepersonnages().get(0));
         
         
-        List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, u.getListepersonnages().get(0).getId());
-        List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, u.getListepersonnages().get(0).getId());
+        Personnage p = personnageService.findOneByNom(nom);
+        
+        req.setAttribute("monPersonnage", p);
+        
+        
+        List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+        List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         req.setAttribute("mesCarottesPlantees", mesCarottes.size());
         req.setAttribute("mesBlesPlantes", mesBles.size());
         
