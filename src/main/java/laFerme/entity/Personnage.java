@@ -52,17 +52,17 @@ public class Personnage implements Serializable {
     private Long id;
     private String nom;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateFromage;
+    private Date dateNourrit;
     private int nbDePoints;
     
     
     public Personnage() {
     }
 
-    public Personnage(Long id, String nom, Date dateFromage) {
+    public Personnage(Long id, String nom, Date dateNourrit) {
         this.id = id;
         this.nom = nom;
-        this.dateFromage = dateFromage;
+        this.dateNourrit = dateNourrit;
     }
 
     public Integer getNbDePoints() {
@@ -85,12 +85,12 @@ public class Personnage implements Serializable {
 
     
     
-    public Date getDateFromage() {
-        return dateFromage;
+    public Date getDateNourrit() {
+        return dateNourrit;
     }
 
-    public void setDateFromage(Date dateFromage) {
-        this.dateFromage = dateFromage;
+    public void setDateNourrit(Date dateNourrit) {
+        this.dateNourrit = dateNourrit;
     }
 
     public Utilisateur getUtilisateur() {

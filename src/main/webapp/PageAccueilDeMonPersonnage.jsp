@@ -127,7 +127,30 @@
                         </tbody>
                     </table>
                 </td>
-                <td class="tableaucentrale">////////////////////////////////////////////////////</td>
+                <td class="tableaucentrale"> 
+                    <c:choose>
+                        <c:when test="${valeur==1}">
+                            <table>
+                                <c:forEach items="mesChevres" var="maChevre">
+                                    <tr>
+                                        <td>
+                                            Chevre n°
+                                        </td>
+                                        <td>
+                                            Date manger
+                                        </td>
+                                        <td>
+                                            Etat
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="nourirChevre" value="nourir">
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                    </c:choose>
+                </td>==============================================================================
                 <td>
                     <form method="post" action="nourirPersonnageServlet">
                         <table class="tabledroite">
@@ -169,7 +192,7 @@
                     </form>
                     <br><br>
 
-                    <form method="get" action="listerChevres">
+                    <form method="get" action="ListerChevreServlet">
                         <table class="tabledroite">
                             <thead>
                                 <tr>
