@@ -95,7 +95,7 @@
                         <thead>
                             <tr>
                                 <td colspan="2">
-                                    Mes ressources occupées
+                                    Mes ressources occupees
                                 </td>
                             </tr>
                         </thead>
@@ -105,7 +105,7 @@
                                     <img src="image/icon_epi.png" alt=""/>
                                 </td>
                                 <td>
-                                    ${mesBlePlantes}
+                                    ${mesBlesPlantes}
                                 </td>
                             </tr>
                             <tr>
@@ -131,16 +131,33 @@
                     <c:choose>
                         <c:when test="${valeur==1}">
                             <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Chevre
+                                        </td>
+                                        <td>
+                                            Etat
+                                        </td>
+                                        <td>
+                                            Derniere nutrition
+                                        </td>
+                                        <td>
+                                            Nourrir ?
+                                        </td>
+                                        
+                                    </tr>
+                                </thead>
                                 <c:forEach items="${mesChevres}" var="maChevre">
                                     <tr>
                                         <td>
                                             Chevre n° ${maChevre.id}
                                         </td>
                                         <td>
-                                            Date manger : ${maChevre.dateManger}
+                                            ${maChevre.etat}
                                         </td>
                                         <td>
-                                            Etat : ${maChevre.etat}
+                                            ${maChevre.dateManger}
                                         </td>
                                         <td>
                                             <input type="radio" name="nourirChevre" value="nourir">
@@ -205,6 +222,7 @@
                             <tbody>
                                 <tr>
                                     <td>
+                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                                         <input type="submit">
                                     </td>
                                 </tr>
@@ -252,7 +270,7 @@
 
                                 <tr>
                                     <td colspan="2">
-                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                        <input type="hidden" name="idPersonnage2" value="${monPersonnage.id}">
                                         <input type="submit">
                                     </td>
                                 </tr>
