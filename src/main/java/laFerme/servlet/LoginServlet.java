@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import laFerme.entity.Utilisateur;
+import laFerme.service.ConfigService;
 import laFerme.service.UtilisateurService;
 import laFerme.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class LoginServlet extends AutowireServlet {
 
     @Autowired
     UtilisateurService utilisateurService;
+    @Autowired
+    ConfigService config;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +41,8 @@ public class LoginServlet extends AutowireServlet {
         } else if ((util.getMdp().equals(mdp))) {
             req.getSession().setAttribute("user", req.getParameter("login"));
             req.getSession().setAttribute("userMdp", req.getParameter("mdp"));
+            Utilisateur u = config.recupererUtilisateur(req);
+            req.setAttribute("personnage", u.getListepersonnages().get(0));
             resp.sendRedirect("CreationPersonnage.jsp");
 //
 
