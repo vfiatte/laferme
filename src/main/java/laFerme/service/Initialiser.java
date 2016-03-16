@@ -34,10 +34,10 @@ public class Initialiser {
 
     @Autowired
     BleService bleService;
-    
+
     @Autowired
     UtilisateurService utilisateurService;
-    
+
     @Autowired
     RessourceService ressourceService;
 
@@ -46,25 +46,28 @@ public class Initialiser {
         Personnage personnage = new Personnage();
         personnage.setNom(nom);
         personnage.setUtilisateur(u);
-        u.getListepersonnages().add(personnage);
+//        u.getListepersonnages().add(personnage);
+        Utilisateur u2 = u;
+        u2.getListepersonnages().add(personnage);
+        utilisateurService.save(u2);
         personnageService.save(personnage);
-        
+
         Ressource ressource = new Ressource();
-        
+
         for (int i = 1; i <= 3; i++) {
             Carotte carotte = new Carotte();
             carotte.setPersonnage(personnage);
             personnage.getListeCarotte().add(carotte);
             carotteService.save(carotte);
-            
+
             ble ble = new ble();
             ble.setPersonnage(personnage);
             personnage.getListeble().add(ble);
             personnageService.save(personnage);
             bleService.save(ble);
-            
+
         }
-        
+
         ressource.setRessourceBle(3);
         ressource.setRessourceCarotte(3);
         ressource.setRessourceChevre(0);
@@ -74,7 +77,6 @@ public class Initialiser {
         ressourceService.save(ressource);
 //        personnageService.save(personnage);
 //        utilisateurService.save(u);
-        
 
     }
 
