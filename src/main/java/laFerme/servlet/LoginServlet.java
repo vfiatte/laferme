@@ -43,7 +43,7 @@ public class LoginServlet extends AutowireServlet {
             req.getSession().setAttribute("userMdp", req.getParameter("mdp"));
             Utilisateur u = config.recupererUtilisateur(req);
             if (u.getListepersonnages().size()>0) {
-                req.setAttribute("personnage", u.getListepersonnages().get(0).getNom());
+                req.setAttribute("personnage", u.getListepersonnages().get(0).getId());
             } else {
                 req.setAttribute("personnage", "pasDePersonnage");
             }
