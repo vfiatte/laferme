@@ -58,6 +58,7 @@ public class NourrirPersonnage {
         if (c.equals(Carotte.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
                 List<Carotte> listCarotte = p.getListeCarotte();
+                System.out.println(listCarotte.size());
                 Carotte random = listCarotte.get(new Random().nextInt(listCarotte.size()));
                 carotteService.delete(random);
             }
@@ -88,6 +89,7 @@ public class NourrirPersonnage {
                 fromageService.save(f);
 
         }
+        ressourceService.save(p.getRessource());
         p.setDateNourrit(ajd.getTime());
 
     }

@@ -164,22 +164,22 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="typeNouriture" value="ble">Ble (x3)</label>
+                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x3)</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="typeNouriture" value="carotte">Carotte (x2)</label>
+                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x2)</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="typeNouriture" value="fromage">Fromage (x2)</label>
+                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('fromage')\" value="fromage">Fromage (x2)</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="typeNouriture" value="chevre">Chevre (x1)</label>
+                                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('chevre')\" value="chevre">Chevre (x1)</label>
                                     </td>
                                 </tr>
                                 <tr>

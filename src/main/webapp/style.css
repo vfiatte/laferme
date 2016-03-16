@@ -53,4 +53,14 @@ body{
 .tableaucentrale{
     width: 1050px;
 }
+
+h1{
+    text-align: center;
+}
+.centrertableau{
+    text-align: center;
+    padding: 0;
+    margin: 10px auto auto auto;
+        
+}
     

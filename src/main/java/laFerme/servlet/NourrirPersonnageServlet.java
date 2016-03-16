@@ -39,9 +39,11 @@ public class NourrirPersonnageServlet extends AutowireServlet {
 
         Utilisateur u = config.recupererUtilisateur(req);
 
-        String c = req.getParameter("typeNourriture");
+    String c = req.getParameter("typeNourriture");
+    
         if (c.equals("carotte")) {
             nourrirPersonnage.nourrirFermier(u.getListepersonnages().get(0), Carotte.class);
+            System.out.println("je mange des carottes");
         }
         if (c.equals("ble")) {
             nourrirPersonnage.nourrirFermier(u.getListepersonnages().get(0), ble.class);
@@ -53,7 +55,7 @@ public class NourrirPersonnageServlet extends AutowireServlet {
             nourrirPersonnage.nourrirFermier(u.getListepersonnages().get(0), Chevre.class);
         }
         
-        resp.sendRedirect("creerunpersonnage");
+        resp.sendRedirect("passerparacceuil");
     }
 
 }

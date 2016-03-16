@@ -60,6 +60,7 @@ public class Initialiser {
             ble ble = new ble();
             ble.setPersonnage(personnage);
             personnage.getListeble().add(ble);
+            personnageService.save(personnage);
             bleService.save(ble);
             
         }
