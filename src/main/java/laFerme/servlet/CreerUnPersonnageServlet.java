@@ -48,7 +48,7 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
 
         String nom = req.getParameter("nom");
         init.CreationInitialisation(u, nom);
-        req.setAttribute("MonPersonnage", u.getListepersonnages().get(0));
+        req.setAttribute("monPersonnage", u.getListepersonnages().get(0));
         
         
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, u.getListepersonnages().get(0).getId());
