@@ -44,9 +44,14 @@ public class PasserAlAccueil extends AutowireServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Utilisateur u = config.recupererUtilisateur(req);
         
+        
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         Personnage p = personnageService.findOne(id);
         req.setAttribute("monPersonnage", p);
+        
+        config.calculPoints(p);
+        
+        
 
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());

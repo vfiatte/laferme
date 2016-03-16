@@ -131,16 +131,16 @@
                     <c:choose>
                         <c:when test="${valeur==1}">
                             <table>
-                                <c:forEach items="mesChevres" var="maChevre">
+                                <c:forEach items="${mesChevres}" var="maChevre">
                                     <tr>
                                         <td>
-                                            Chevre n°
+                                            Chevre n° ${maChevre.id}
                                         </td>
                                         <td>
-                                            Date manger
+                                            Date manger : ${maChevre.dateManger}
                                         </td>
                                         <td>
-                                            Etat
+                                            Etat : ${maChevre.etat}
                                         </td>
                                         <td>
                                             <input type="radio" name="nourirChevre" value="nourir">
@@ -229,17 +229,17 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="planteRessource" value="ble">Ble</label><br>
+                                        <label><input type="radio" name="planteRessource" onclick=\"getAnswer('ble')\" value="ble">Ble</label><br>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label><input type="radio" name="planteRessource" value="carotte">Carotte</label><br>
+                                        <label><input type="radio" name="planteRessource" onclick=\"getAnswer('carotte')\" value="carotte">Carotte</label><br>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Combien ?
-                                        <select>
+                                        <select name="quantite">
                                             <c:forEach var="i" begin="1" end="50">
                                                 <option>
                                                     ${i}
@@ -252,6 +252,7 @@
 
                                 <tr>
                                     <td colspan="2">
+                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                                         <input type="submit">
                                     </td>
                                 </tr>

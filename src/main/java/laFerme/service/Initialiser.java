@@ -6,6 +6,7 @@
 package laFerme.service;
 
 import laFerme.entity.Carotte;
+import laFerme.entity.Chevre;
 import laFerme.entity.Personnage;
 import laFerme.entity.Ressource;
 import laFerme.entity.Utilisateur;
@@ -62,22 +63,24 @@ public class Initialiser {
             personnage.getListeble().add(ble);
             bleService.save(ble);
 
+            Chevre chevre = new Chevre();
+            chevre.setPersonnage(personnage);
+            personnage.getListeChevre().add(chevre);
+            chevreService.save(chevre);
         }
 
         ressource.setRessourceBle(3);
         ressource.setRessourceCarotte(3);
-        ressource.setRessourceChevre(0);
+        ressource.setRessourceChevre(3);
         ressource.setRessourceFromage(0);
         ressource.setPersonnage(personnage);
         personnage.setRessource(ressource);
         ressourceService.save(ressource);
 //        personnageService.save(personnage);
 //        utilisateurService.save(u);
-for(Carotte carotte : personnage.getListeCarotte()){
-    System.out.println(carotte.getId());
-}
-
-
+        for (Carotte carotte : personnage.getListeCarotte()) {
+            System.out.println(carotte.getId());
+        }
 
     }
 

@@ -51,7 +51,8 @@ public class NourrirPersonnageServlet extends AutowireServlet {
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         Personnage p = personnageService.findOne(id);
         String c = req.getParameter("typeNourriture");
-
+        config.calculPoints(p);
+        
         if (c.equals("carotte")) {
             nourrirPersonnage.nourrirFermier(p, Carotte.class);
             System.out.println("je mange des carottes");

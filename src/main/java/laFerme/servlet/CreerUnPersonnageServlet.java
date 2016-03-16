@@ -39,7 +39,8 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
     CarotteService carotteService;
     @Autowired
     BleService bleService;
-    
+    @Autowired
+    ConfigService config;
     @Autowired
     PersonnageService personnageService;
 
@@ -55,7 +56,7 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
         Personnage p = personnageService.findOneByNom(nom);
         
         req.setAttribute("monPersonnage", p);
-        
+        config.calculPoints(p);
         
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
