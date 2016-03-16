@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Random;
 import laFerme.entity.Carotte;
 import laFerme.entity.Chevre;
+import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Fromage;
 import laFerme.entity.Personnage;
 import laFerme.entity.ble;
@@ -50,44 +51,75 @@ public class NourrirPersonnage {
     }
 
     public void nourrirFermier(Personnage p, Class c) {
-        
+
         GregorianCalendar ajd = new GregorianCalendar();
+        int compteur = 0;
 
         Map<Class, Integer> maMap = mapNutritionFermier();
         Integer nbaSupprimer = maMap.get(c);
+        
         if (c.equals(Carotte.class)) {
+
             for (int i = 1; i <= nbaSupprimer; i++) {
-                List<Carotte> listCarotte = p.getListeCarotte();
-                Carotte carotte = listCarotte.get(listCarotte.size()-1);
-                carotteService.delete(carotte);
+                if (p.getRessource().getRessourceCarotte() == 0) {
+                    return;
+                    
+                } else {
+                    compteur = compteur + 1;
+                    List<Carotte> listCarotte = p.getListeCarotte();
+                    Carotte carotte = listCarotte.get(listCarotte.size() - 1);
+                    carotteService.delete(carotte);
+                    p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
+                }
             }
-            p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - nbaSupprimer);
+            
 
         }
+
         if (c.equals(ble.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
-                List<ble> listBle = p.getListeble();
-                ble blee = listBle.get(listBle.size()-1);
-                bleService.delete(blee);
+                if (p.getRessource().getRessourceBle() == 0) {
+                    return;
+                } else {
+                    compteur = compteur + 1;
+                    List<ble> listBle = p.getListeble();
+                    ble blee = listBle.get(listBle.size() - 1);
+                    bleService.delete(blee);
+                }
             }
-            p.getRessource().setRessourceBle(p.getRessource().getRessourceBle()- nbaSupprimer);
+            p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() - compteur);
 
         }
+
         if (c.equals(Chevre.class)) {
             for (int i = 1; i <= nbaSupprimer; i++) {
-                List<Chevre> listChevre = p.getListeChevre();
-                Chevre chevre = listChevre.get(listChevre.size()-1);
-                chevreService.delete(chevre);
+                if (p.getRessource().getRessourceChevre() == 0) {
+                    return;
+                } else {
+                    compteur = compteur + 1;
+                    List<Chevre> listChevre = p.getListeChevre();
+                    Chevre chevre = listChevre.get(listChevre.size() - 1);
+                    chevreService.delete(chevre);
+                }
             }
-            p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- nbaSupprimer);
+            p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() - compteur);
 
         }
+
         if (c.equals(Fromage.class)) {
-                Fromage f = p.getFromage();
-                f.setQuantite(f.getQuantite()-nbaSupprimer);
+            Fromage f = p.getFromage();
+            if (f.getQuantite() >= nbaSupprimer) {
+                f.setQuantite(f.getQuantite() - nbaSupprimer);
+                fromageService.save(f);
+            } else {
+                Integer nb = nbaSupprimer - f.getQuantite();
+                f.setQuantite(f.getQuantite() - nb);
                 fromageService.save(f);
 
+            }
+
         }
+
         ressourceService.save(p.getRessource());
         p.setDateNourrit(ajd.getTime());
 

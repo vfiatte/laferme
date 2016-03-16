@@ -27,23 +27,23 @@ public class Fromage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long quantite;
+    private int quantite;
 
     public Fromage() {
     }
 
-    public Fromage(Long id, Long quantite) {
+    public Fromage(Long id, int quantite) {
         this.id = id;
         this.quantite = quantite;
     }
 
     
     
-    public Long getQuantite() {
+    public int getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(Long quantite) {
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
     
