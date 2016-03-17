@@ -46,6 +46,7 @@ public class MortService {
             varDate.setTime(c.getDateManger());
             varDate.add(Calendar.MINUTE, 12);
             if (varDate.before(ajd)) {
+                System.out.println("coucuo");
                 chevreService.delete(c);
                 p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- 1);
             }
