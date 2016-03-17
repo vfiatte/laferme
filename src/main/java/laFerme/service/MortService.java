@@ -7,6 +7,7 @@ package laFerme.service;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import laFerme.entity.Chevre;
 import laFerme.entity.Personnage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,26 +22,33 @@ public class MortService {
 
     @Autowired
     PersonnageService personnageService;
-    
+
+    @Autowired
+    RessourceService ressourceService;
+
     @Autowired
     ChevreService chevreService;
-    
+
     GregorianCalendar ajd = new GregorianCalendar();
     GregorianCalendar varDate = new GregorianCalendar();
 
     public void mortFermier(Personnage p) {
         varDate.setTime(p.getDateNourrit());
         varDate.add(Calendar.MINUTE, 12);
-        if (varDate.after(ajd)) {
+        if (varDate.before(ajd)) {
             personnageService.delete(p);
         }
     }
-    
-    public void mortChevre(Chevre c) {
-        varDate.setTime(c.getDateManger());
-        varDate.add(Calendar.MINUTE, 12);
-        if (varDate.after(ajd)) {
-            chevreService.delete(c);
+
+    public void mortChevre(Personnage p) {
+        List<Chevre> listeChevre = chevreService.findAllByPersonnageId(p.getId());
+        for (Chevre c : listeChevre) {
+            varDate.setTime(c.getDateManger());
+            varDate.add(Calendar.MINUTE, 12);
+            if (varDate.before(ajd)) {
+                chevreService.delete(c);
+                p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- 1);
+            }
         }
     }
 }

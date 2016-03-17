@@ -88,9 +88,7 @@ public class CueillirMethode {
         for (Carotte carotte : listeCarottePlantee) {
             varDate.setTime(carotte.getDatePlantation());
             varDate.add(Calendar.MINUTE, 6);
-            System.out.println(varDate);
-            System.out.println(ajd);
-            if (varDate.after(ajd)) {
+            if (varDate.before(ajd)) {
                 int valeur = 2 + r.nextInt(4 - 2);
                 for (int i = 1; i <= valeur; i++) {
                     System.out.println("");
@@ -112,7 +110,7 @@ public class CueillirMethode {
             varDate.setTime(ble.getDatePlantation());
             varDate.add(Calendar.MINUTE, 6);
 
-            if (varDate.after(ajd)) {
+            if (varDate.before(ajd)) {
                 int valeur = 2 + r.nextInt(4 - 2);
                 for (int i = 1; i <= valeur; i++) {
                     ble blebb = new ble();

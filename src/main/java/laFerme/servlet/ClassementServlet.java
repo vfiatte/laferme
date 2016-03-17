@@ -28,8 +28,8 @@ public class ClassementServlet extends AutowireServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("titre", "Classement");
-        List<Personnage> listePersonnage = personnageService.findAllOrderByNbDePoints;
+//        req.setAttribute("titre", "Classement");
+//        List<Personnage> listePersonnage = personnageService.findAllOrderByNbDePoints;
     }
     
 
