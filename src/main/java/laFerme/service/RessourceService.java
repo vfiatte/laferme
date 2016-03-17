@@ -16,4 +16,5 @@ import org.springframework.stereotype.Service;
  */
 public interface RessourceService extends CrudRepository<Ressource, Long>{
     
+    
 }

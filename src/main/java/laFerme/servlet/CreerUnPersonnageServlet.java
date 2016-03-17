@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import laFerme.entity.Carotte;
 import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
+import laFerme.entity.Ressource;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
 import laFerme.service.BleService;
@@ -21,6 +22,7 @@ import laFerme.service.CarotteService;
 import laFerme.service.ConfigService;
 import laFerme.service.Initialiser;
 import laFerme.service.PersonnageService;
+import laFerme.service.RessourceService;
 import laFerme.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,6 +45,8 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
     ConfigService config;
     @Autowired
     PersonnageService personnageService;
+    @Autowired
+    RessourceService ressourceService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,19 +55,18 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
 
         String nom = req.getParameter("nom");
         init.CreationInitialisation(u, nom);
-        
-        
+
         Personnage p = personnageService.findOneByNom(nom);
         
-        req.setAttribute("monPersonnage", p);
         config.calculPoints(p);
-        
+        req.setAttribute("monPersonnage", p);
+
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         req.setAttribute("mesCarottesPlantees", mesCarottes.size());
         req.setAttribute("mesBlesPlantes", mesBles.size());
-        
-        
+
+
         req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
 
     }
