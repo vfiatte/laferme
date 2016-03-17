@@ -35,13 +35,13 @@ public class Chevre implements Serializable {
     private Long id;
     
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateManger;
+    private Date dateManger = new Date();
     
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateFromage;
+    private Date dateFromage = new Date();
     
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateNaissance;
+    private Date dateNaissance = new Date();
     
     private EtatChevreEnumeration etat;
 

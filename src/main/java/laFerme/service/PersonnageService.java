@@ -5,6 +5,7 @@
  */
 package laFerme.service;
 
+import java.util.List;
 import laFerme.entity.Personnage;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,5 +15,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PersonnageService extends CrudRepository<Personnage, Long>{
     public Personnage findOneByNom(String s);
+    public List<Personnage> findAllByOrderByNbDePointsDesc();
     
 }
