@@ -51,7 +51,7 @@
                             </tr>
                             <tr>
                         <form method="get" action="ClassementServlet">
-                            <td>
+                            <td colspan="2">
                                 <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                                 <button type="submit">Acceder au classement</button>
                             </td>
@@ -104,9 +104,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                         <a href="BanqueServlet"><button>Acceder au marche</button></a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -187,7 +188,7 @@
                         <td>
                             ${maChevre.dateManger}
                         </td>
-                        <td>
+                        <td colspan="2">
                             <input type="checkbox" name="nourirChevre" value="${maChevre.id}">
                         </td>
                         <td>
@@ -195,6 +196,20 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x1)</label>
+                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x1)</label>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
             </table>
         </c:when>
         <c:when test="${valeur==2}">
