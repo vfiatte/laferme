@@ -10,6 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var task = function(){
+            document.location.reload();
+            }
+            window.setTimeout(task, 1000);
+        </script>
         <title>JSP Page</title>
         <c:import url = "_CSS.jsp"/>
     </head>
