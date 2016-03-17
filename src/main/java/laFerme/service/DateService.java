@@ -36,7 +36,7 @@ public class DateService {
         for (Personnage p : listePersonnage) {
             cueillir.recuperation(p);
             mort.mortChevre(p);
-            mort.mortFermier(p);
+//            mort.mortFermier(p);
         }
     
     }

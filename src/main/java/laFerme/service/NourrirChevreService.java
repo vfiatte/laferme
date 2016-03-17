@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import laFerme.entity.Carotte;
 import laFerme.entity.Chevre;
+import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Fromage;
 import laFerme.entity.Personnage;
 import laFerme.entity.ble;
@@ -46,79 +47,47 @@ public class NourrirChevreService {
 
     }
 
-    public void nourrirChevre(List<Chevre> liste, Class c) {
+    public void nourrirChevre(Long id, Class c) {
 
         GregorianCalendar ajd = new GregorianCalendar();
         int compteur = 0;
+
+        Chevre chevre = chevreService.findOne(id);
 
         Map<Class, Integer> maMap = mapNutritionChevre();
         Integer nbaSupprimer = maMap.get(c);
 
         if (c.equals(Carotte.class)) {
 
-            for (Chevre chevre : liste) {
-
-//                for (int i = 1; i <= nbaSupprimer; i++) {
-//                    if (chevre.getPersonnage().getRessource().getRessourceCarotte() == 0) {
-//                        return;
-//                    } else {
-//                        List<Carotte> listCarotte = p.getListeCarotte();
-//                        Carotte carotte = listCarotte.get(listCarotte.size() - 1);
-//                        carotteService.delete(carotte);
-//                        p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
-//                    }
-//                }
-
+            for (int i = 1; i <= nbaSupprimer; i++) {
+                if (chevre.getPersonnage().getRessource().getRessourceCarotte() == 0) {
+                    return;
+                } else {
+                    List<Carotte> listCarotte = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, chevre.getPersonnage().getId());
+                    Carotte carotte = listCarotte.get(listCarotte.size() - 1);
+                    carotteService.delete(carotte);
+                    chevre.getPersonnage().getRessource().setRessourceCarotte(chevre.getPersonnage().getRessource().getRessourceCarotte() - 1);
+                }
             }
+
         }
 
-//        if (c.equals(ble.class)) {
-//            for (int i = 1; i <= nbaSupprimer; i++) {
-//                if (p.getRessource().getRessourceBle() == 0) {
-//                    return;
-//                } else {
-//                    compteur = compteur + 1;
-//                    List<ble> listBle = p.getListeble();
-//                    ble blee = listBle.get(listBle.size() - 1);
-//                    bleService.delete(blee);
-//                }
-//            }
-//            p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() - compteur);
-//
-//        }
+        if (c.equals(ble.class)) {
+            for (int i = 1; i <= nbaSupprimer; i++) {
+                if (chevre.getPersonnage().getRessource().getRessourceBle() == 0) {
+                    return;
+                } else {
+                    List<ble> listBle = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, chevre.getPersonnage().getId());
+                    ble blee = listBle.get(listBle.size() - 1);
+                    bleService.delete(blee);
+                    chevre.getPersonnage().getRessource().setRessourceBle(chevre.getPersonnage().getRessource().getRessourceBle() - compteur);
+                }
+            }
 
-//        if (c.equals(Chevre.class)) {
-//            for (int i = 1; i <= nbaSupprimer; i++) {
-//                if (p.getRessource().getRessourceChevre() == 0) {
-//                    return;
-//                } else {
-//                    compteur = compteur + 1;
-//                    List<Chevre> listChevre = p.getListeChevre();
-//                    Chevre chevre = listChevre.get(listChevre.size() - 1);
-//                    chevreService.delete(chevre);
-//                }
-//            }
-//            p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() - compteur);
-//
-//        }
+        }
 
-//        if (c.equals(Fromage.class)) {
-//            Fromage f = p.getFromage();
-//            if (f.getQuantite() >= nbaSupprimer) {
-//                f.setQuantite(f.getQuantite() - nbaSupprimer);
-//                fromageService.save(f);
-//            } else {
-//                Integer nb = nbaSupprimer - f.getQuantite();
-//                f.setQuantite(f.getQuantite() - nb);
-//                fromageService.save(f);
-//
-//            }
-//
-//        }
-
-//        ressourceService.save(p.getRessource());
-//        p.setDateNourrit(ajd.getTime());
+        ressourceService.save(chevre.getPersonnage().getRessource());
+        chevre.getPersonnage().setDateNourrit(ajd.getTime());
 
     }
-
 }

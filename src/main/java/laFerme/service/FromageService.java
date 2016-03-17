@@ -14,4 +14,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface FromageService extends CrudRepository<Fromage, Long>{
     
+    public Fromage findOneByPersonnageId(Long id);
+    
 }

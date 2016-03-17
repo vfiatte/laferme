@@ -44,46 +44,51 @@ public class CueillirMethode {
     RessourceService ressourceService;
 
     public void recuperation(Personnage p) {
-        List<Chevre> listeChevre = p.getListeChevre();
+        List<Chevre> listeChevre = chevreService.findAllByPersonnageId(p.getId());
         List<Carotte> listeCarottePlante = p.getListeCarotte();
         List<ble> listeBlePlante = p.getListeble();
         GregorianCalendar ajd = new GregorianCalendar();
         GregorianCalendar varDate = new GregorianCalendar();
         Random r = new Random();
 
-//        for (Chevre chevre : listeChevre) {
-//            varDate.setTime(chevre.getDateFromage());
-//            varDate.add(Calendar.MINUTE, 6);
-//            if (varDate.after(ajd)) {
-//                int valeur = 2 + r.nextInt(4 - 2);
+        for (Chevre chevre : listeChevre) {
+            varDate.setTime(chevre.getDateFromage());
+            varDate.add(Calendar.MINUTE, 6);
+            System.out.println(chevre.getDateFromage());
+            System.out.println(varDate);
+            System.out.println(ajd);
+            if (varDate.before(ajd)) {
+                int valeur = 2 + r.nextInt(4 - 2);
 //                p.getFromage().setQuantite(p.getFromage().getQuantite() + valeur);
-//                chevre.setDateFromage(ajd.getTime());
-//                chevreService.save(chevre);
-//                p.getRessource().setRessourceFromage(p.getRessource().getRessourceFromage() + valeur);
-//                ressourceService.save(p.getRessource());
-//            }
-//
-//        }
-//        List<Chevre> listeChevreEnceinte = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.ENCEINTE, p.getId());
-//        for (Chevre chevre : listeChevreEnceinte) {
-//            varDate.setTime(chevre.getDateNaissance());
-//            varDate.add(Calendar.MINUTE, 12);
-//            if (varDate.after(ajd)) {
-//                Chevre chevrebb = new Chevre();
-//                chevrebb.setDateFromage(ajd.getTime());
-//                chevrebb.setPersonnage(p);
-//                p.getListeChevre().add(chevrebb);
-//                chevrebb.setDateManger(ajd.getTime());
-//                chevreService.save(chevrebb);
-//                chevre.setEtat(EtatChevreEnumeration.DISPONIBLE);
-//                chevre.setDateNaissance(ajd.getTime());
-//                chevreService.save(chevre);
-//                p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() + 1);
-//                personnageService.save(p);
-//                ressourceService.save(p.getRessource());
-//            }
-//
-//        }
+                chevre.setDateFromage(ajd.getTime());
+                chevreService.save(chevre);
+//                fromageService.save(p.getFromage());
+                personnageService.save(p);
+                p.getRessource().setRessourceFromage(p.getRessource().getRessourceFromage() + valeur);
+                ressourceService.save(p.getRessource());
+            }
+
+        }
+        List<Chevre> listeChevreEnceinte = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.ENCEINTE, p.getId());
+        for (Chevre chevre : listeChevreEnceinte) {
+            varDate.setTime(chevre.getDateNaissance());
+            varDate.add(Calendar.MINUTE, 12);
+            if (varDate.before(ajd)) {
+                Chevre chevrebb = new Chevre();
+                chevrebb.setDateFromage(ajd.getTime());
+                chevrebb.setPersonnage(p);
+                p.getListeChevre().add(chevrebb);
+                chevrebb.setDateManger(ajd.getTime());
+                chevreService.save(chevrebb);
+                chevre.setEtat(EtatChevreEnumeration.DISPONIBLE);
+                chevre.setDateNaissance(ajd.getTime());
+                chevreService.save(chevre);
+                p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() + 1);
+                personnageService.save(p);
+                ressourceService.save(p.getRessource());
+            }
+
+        }
         List<Carotte> listeCarottePlantee = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         for (Carotte carotte : listeCarottePlantee) {
             varDate.setTime(carotte.getDatePlantation());
@@ -91,7 +96,6 @@ public class CueillirMethode {
             if (varDate.before(ajd)) {
                 int valeur = 2 + r.nextInt(4 - 2);
                 for (int i = 1; i <= valeur; i++) {
-                    System.out.println("");
                     Carotte carottebb = new Carotte();
                     carottebb.setPersonnage(p);
                     p.getListeCarotte().add(carottebb);
@@ -116,7 +120,7 @@ public class CueillirMethode {
                     ble blebb = new ble();
                     blebb.setPersonnage(p);
                     p.getListeble().add(blebb);
-                    p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() + valeur);
+                    p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() + 1);
                     bleService.save(blebb);
                     personnageService.save(p);
                     ressourceService.save(p.getRessource());

@@ -50,5 +50,6 @@ public class MortService {
                 p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- 1);
             }
         }
+        ressourceService.save(p.getRessource());
     }
 }
