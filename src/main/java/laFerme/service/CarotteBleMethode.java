@@ -51,6 +51,8 @@ public class CarotteBleMethode {
                         Carotte c = listeCarotte.get(listeCarotte.size() - 1);
                         c.setEtat(EtatEnumeration.PLANTE);
                         c.setDatePlantation(ajd.getTime());
+                        System.out.println(quantite);
+                        System.out.println(c.getDatePlantation());
                         p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
                         carotteService.save(c);
                     }

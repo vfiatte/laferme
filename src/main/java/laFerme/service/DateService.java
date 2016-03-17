@@ -24,6 +24,8 @@ public class DateService {
     CueillirMethode cueillir;
     @Autowired
     PersonnageService personnageService;
+    @Autowired
+    MortService mort;
 
     @Scheduled(fixedDelay = 30000)
     public void dateajd() {
@@ -33,6 +35,8 @@ public class DateService {
         List<Personnage> listePersonnage = (List<Personnage>) personnageService.findAll();
         for (Personnage p : listePersonnage) {
             cueillir.recuperation(p);
+            mort.mortChevre(p);
+            mort.mortFermier(p);
         }
     
     }
