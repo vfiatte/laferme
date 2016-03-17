@@ -32,8 +32,7 @@ public class CarotteBleMethode {
     @Autowired
     RessourceService ressourceService;
     
-    @Autowired
-    DateService dateService;
+  
 
     public void planter(Personnage p, Class classe, Integer quantite) {
         GregorianCalendar ajd = new GregorianCalendar();
