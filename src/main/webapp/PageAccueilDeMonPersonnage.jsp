@@ -157,59 +157,75 @@
     <c:choose>
         <c:when test="${valeur==1}">
             <table>
-                <thead>
-                    <tr>
-                        <td>
-                            Chevre
-                        </td>
-                        <td>
-                            Etat
-                        </td>
-                        <td>
-                            Derniere nutrition
-                        </td>
-                        <td>
-                            Nourrir ?
-                        </td>
-                        <td>
-                            Mettre en couple
-                        </td>
+                <form method="post" action="NourirChevreServlet">
+                    <thead>
+                        <tr>
+                            <td>
+                                Chevre
+                            </td>
+                            <td>
+                                Etat
+                            </td>
+                            <td>
+                                Derniere nutrition
+                            </td>
+                            <td>
+                                Nourrir ?
+                            </td>
+                            <td>
+                                Mettre en couple
+                            </td>
 
-                    </tr>
-                </thead>
-                <c:forEach items="${mesChevres}" var="maChevre">
+                        </tr>
+                    </thead>
+                    <c:forEach items="${mesChevres}" var="maChevre">
+                        <tr>
+                            <td>
+                                Chevre n ${maChevre.id}
+                            </td>
+                            <td>
+                                ${maChevre.etat}
+                            </td>
+                            <td>
+                                ${maChevre.dateManger}
+                            </td>
+                            <td colspan="2">
+                                <input type="checkbox" name="nourirChevre" value="${maChevre.id}">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="mettreEnCouple" value="${maChevre.id}">
+                            </td>
+                        </tr>
+                    </c:forEach>
                     <tr>
                         <td>
-                            Chevre n ${maChevre.id}
                         </td>
                         <td>
-                            ${maChevre.etat}
                         </td>
                         <td>
-                            ${maChevre.dateManger}
-                        </td>
-                        <td colspan="2">
-                            <input type="checkbox" name="nourirChevre" value="${maChevre.id}">
                         </td>
                         <td>
-                            <input type="checkbox" name="mettreEnCouple" value="${maChevre.id}">
+                            <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x1)</label>
+                            <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x1)</label>
+                        </td>
+                        <td>
                         </td>
                     </tr>
-                </c:forEach>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x1)</label>
-                        <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x1)</label>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                            <button type="submit">Nourrir</button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </form>
             </table>
         </c:when>
         <c:when test="${valeur==2}">

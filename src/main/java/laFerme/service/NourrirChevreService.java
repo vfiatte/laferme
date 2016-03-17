@@ -50,7 +50,6 @@ public class NourrirChevreService {
     public void nourrirChevre(Long id, Class c) {
 
         GregorianCalendar ajd = new GregorianCalendar();
-        int compteur = 0;
 
         Chevre chevre = chevreService.findOne(id);
 
@@ -65,6 +64,8 @@ public class NourrirChevreService {
                 } else {
                     List<Carotte> listCarotte = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, chevre.getPersonnage().getId());
                     Carotte carotte = listCarotte.get(listCarotte.size() - 1);
+                    chevre.setDateManger(ajd.getTime());
+                    chevreService.save(chevre);
                     carotteService.delete(carotte);
                     chevre.getPersonnage().getRessource().setRessourceCarotte(chevre.getPersonnage().getRessource().getRessourceCarotte() - 1);
                 }
@@ -79,8 +80,10 @@ public class NourrirChevreService {
                 } else {
                     List<ble> listBle = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, chevre.getPersonnage().getId());
                     ble blee = listBle.get(listBle.size() - 1);
+                    chevre.setDateManger(ajd.getTime());
+                    chevreService.save(chevre);
                     bleService.delete(blee);
-                    chevre.getPersonnage().getRessource().setRessourceBle(chevre.getPersonnage().getRessource().getRessourceBle() - compteur);
+                    chevre.getPersonnage().getRessource().setRessourceBle(chevre.getPersonnage().getRessource().getRessourceBle() - 1);
                 }
             }
 
