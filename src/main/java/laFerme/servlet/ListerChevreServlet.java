@@ -11,9 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import laFerme.entity.Carotte;
 import laFerme.entity.Chevre;
+import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
+import laFerme.entity.ble;
+import laFerme.service.BleService;
+import laFerme.service.CarotteService;
 import laFerme.service.ChevreService;
 import laFerme.service.ConfigService;
 import laFerme.service.PersonnageService;
@@ -33,6 +38,10 @@ public class ListerChevreServlet extends AutowireServlet {
     PersonnageService personnageService;
     @Autowired
     ConfigService config;
+    @Autowired
+    CarotteService carotteService;
+    @Autowired
+    BleService bleService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,7 +52,18 @@ public class ListerChevreServlet extends AutowireServlet {
         List<Chevre> listeChevres = chevreService.findAllByPersonnageId(id);
         req.setAttribute("titre", "Votre troupeau de chevres");
         req.setAttribute("mesChevres", listeChevres);
-        req.getRequestDispatcher("passerparacceuil").include(req, resp);
+        
+        config.calculPoints(p);
+        req.setAttribute("monPersonnage", p);
+
+        List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+        List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+        req.setAttribute("mesCarottesPlantees", mesCarottes.size());
+        req.setAttribute("mesBlesPlantes", mesBles.size());
+
+        req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
+
+//        req.getRequestDispatcher("passerparacceuil").include(req, resp);
     }
 
 }
