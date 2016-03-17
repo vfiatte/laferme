@@ -6,6 +6,7 @@
 package laFerme.service;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import laFerme.entity.Carotte;
@@ -30,6 +31,9 @@ public class CarotteBleMethode {
 
     @Autowired
     RessourceService ressourceService;
+    
+    @Autowired
+    DateService dateService;
 
     public void planter(Personnage p, Class classe, Integer quantite) {
         GregorianCalendar ajd = new GregorianCalendar();
@@ -40,6 +44,7 @@ public class CarotteBleMethode {
                 return;
             } else {
                 for (int i = 1; i <= quantite; i++) {
+                    listeCarotte = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, p.getId());
                     if (p.getRessource().getRessourceCarotte() == 0) {
 //                    if (listeCarotte.size() == 0) {
                         return;

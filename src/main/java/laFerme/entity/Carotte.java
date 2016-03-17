@@ -34,7 +34,9 @@ public class Carotte implements Serializable {
     private Long id;
     private EtatEnumeration etat=EtatEnumeration.NONPLANTE;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date datePlantation = new Date();
+    private Date datePlantation = null;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date tempsRecolte = null;
 
     public Carotte() {
     }
@@ -44,6 +46,14 @@ public class Carotte implements Serializable {
     public Carotte(Long id, EtatEnumeration etat) {
         this.id = id;
         this.etat = etat;
+    }
+
+    public Date getTempsRecolte() {
+        return tempsRecolte;
+    }
+
+    public void setTempsRecolte(Date tempsRecolte) {
+        this.tempsRecolte = tempsRecolte;
     }
 
     

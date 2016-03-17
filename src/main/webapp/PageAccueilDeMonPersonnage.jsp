@@ -106,6 +106,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <form method="get" action="DetailBlePlanteServlet">
                             <tr>
                                 <td>
                                     <img src="image/icon_epi.png" alt=""/>
@@ -114,9 +115,12 @@
                                     ${mesBlesPlantes}
                                 </td>
                                 <td>
-                                    <a href ="">Details</a>
+                                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                    <button type="submit">Details</button>
                                 </td>
                             </tr>
+                        </form>
+                        <form method="get" action="DetailCarottePlanteeServlet">
                             <tr>
                                 <td>
                                     <img src="image/carrots_24.png" alt=""/>
@@ -125,17 +129,11 @@
                                     ${mesCarottesPlantees}
                                 </td>
                                 <td>
-                                    <a href ="">Details</a>
+                                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                    <button type="submit">Details</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <img src="image/cheese.png" alt=""/>
-                                </td>
-                                <td>
-                                    ressource.fromage
-                                </td>
-                            </tr>
+                        </form>
                         </tbody>
                     </table>
                 </td>
@@ -181,69 +179,119 @@
                         <c:when test="${valeur==2}">
                             <h2>Vos echanges</h2>
                             <form method="post" action="EchangeServlet">
-                            <table>
-                                <tr>
-                                    <td>
-                                        Echanger :
-                                    </td>
-                                    <td>
-                                        <select name="quantiteble">
-                                            <c:forEach var="i" begin="0" end="50">
-                                                <option>
-                                                    ${i}
-                                                </option>
-                                            </c:forEach>
-                                        </select>
-                                        <img src="image/icon_epi.png" alt=""/>
-                                    </td>
-                                    <td>
-                                        <select name="quantiteCarotte">
-                                            <c:forEach var="i" begin="0" end="50">
-                                                <option>
-                                                    ${i}
-                                                </option>
-                                            </c:forEach>
-                                        </select>
-                                        <img src="image/carrots_24.png" alt=""/>
-                                    </td>
-                                    <td>
-                                        <select name="quantiteChevre">
-                                            <c:forEach var="i" begin="0" end="50">
-                                                <option>
-                                                    ${i}
-                                                </option>
-                                            </c:forEach>
-                                        </select>
-                                        <img src="image/des-animaux-chevre-icone-8566-128.png" alt=""/>
-                                    </td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Echanger :
+                                        </td>
+                                        <td>
+                                            <select name="quantiteble">
+                                                <c:forEach var="i" begin="0" end="50">
+                                                    <option>
+                                                        ${i}
+                                                    </option>
+                                                </c:forEach>
+                                            </select>
+                                            <img src="image/icon_epi.png" alt=""/>
+                                        </td>
+                                        <td>
+                                            <select name="quantiteCarotte">
+                                                <c:forEach var="i" begin="0" end="50">
+                                                    <option>
+                                                        ${i}
+                                                    </option>
+                                                </c:forEach>
+                                            </select>
+                                            <img src="image/carrots_24.png" alt=""/>
+                                        </td>
+                                        <td>
+                                            <select name="quantiteChevre">
+                                                <c:forEach var="i" begin="0" end="50">
+                                                    <option>
+                                                        ${i}
+                                                    </option>
+                                                </c:forEach>
+                                            </select>
+                                            <img src="image/des-animaux-chevre-icone-8566-128.png" alt=""/>
+                                        </td>
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Contre :
-                                    </td>
-                                    <td colspan="3">
-                                        <select name="contre">
-                                            <option value="ble">
-                                                Ble
-                                            </option>
-                                            <option value="carotte">
-                                                Carotte
-                                            </option>
-                                            <option value="chevre">
-                                                Chevre
-                                            </option>
-                                        </select>
-                                    </td>
-                                <tr>
-                                    <td colspan="3">
-                                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                                        <input type="submit">
-                                    </td>
-                                </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Contre :
+                                        </td>
+                                        <td colspan="3">
+                                            <select name="contre">
+                                                <option value="ble">
+                                                    Ble
+                                                </option>
+                                                <option value="carotte">
+                                                    Carotte
+                                                </option>
+                                                <option value="chevre">
+                                                    Chevre
+                                                </option>
+                                            </select>
+                                        </td>
+                                    <tr>
+                                        <td colspan="3">
+                                            <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                                            <input type="submit">
+                                        </td>
+                                    </tr>
 
-                            </table>            
+                                </table>            
                             </form>
+                        </c:when>
+                        <c:when test="${valeur==3}">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Ble
+                                        </td>
+                                        <td>
+                                            Date de plantation
+                                        </td>
+
+                                    </tr>
+                                </thead>
+                                <c:forEach items="${blePlante}" var="monBle">
+                                    <tr>
+                                        <td>
+                                            Ble n ${monBle.id}
+                                        </td>
+                                        <td>
+                                            ${monBle.datePlantation}
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                        <c:when test="${valeur==4}">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Carottes
+                                        </td>
+                                        <td>
+                                            Date de plantation
+                                        </td>
+
+                                    </tr>
+                                </thead>
+                                <c:forEach items="${carottePlante}" var="maCarotte">
+                                    <tr>
+                                        <td>
+                                            Carotte n ${maCarotte.id}
+                                        </td>
+                                        <td>
+                                            ${maCarotte.datePlantation}
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
                         </c:when>
                     </c:choose>
                 </td><br>

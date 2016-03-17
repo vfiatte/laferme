@@ -33,7 +33,7 @@ public class ble implements Serializable {
     private Long id;
     private EtatEnumeration etat = EtatEnumeration.NONPLANTE;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date datePlantation = new Date();
+    private Date datePlantation = null;
 
     public ble() {
     }
