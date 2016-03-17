@@ -28,7 +28,7 @@ public class DateService {
     @Scheduled(fixedDelay = 30000)
     public void dateajd() {
 //        System.out.println("coucou");
-        GregorianCalendar ajd = new GregorianCalendar();
+//        GregorianCalendar ajd = new GregorianCalendar();
 
         List<Personnage> listePersonnage = (List<Personnage>) personnageService.findAll();
         for (Personnage p : listePersonnage) {

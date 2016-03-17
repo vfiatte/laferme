@@ -14,7 +14,7 @@
             var task = function(){
             document.location.reload();
             }
-            window.setTimeout(task, 1000);
+            window.setTimeout(task, 1000000);
         </script>
         <title>JSP Page</title>
         <c:import url = "_CSS.jsp"/>
@@ -24,7 +24,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <div class="titre">Bienvenu dans votre ferme, à vous de jouer, fermier en herbe !</div><br><br>
+                    <div class="titre">Bienvenu dans votre ferme, a vous de jouer, fermier en herbe !</div><br><br>
                 </td> 
                 <td></td>
             </tr>
