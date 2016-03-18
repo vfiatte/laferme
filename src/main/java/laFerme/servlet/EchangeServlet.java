@@ -17,6 +17,7 @@ import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
+import laFerme.enumeration.EtatChevreEnumeration;
 import laFerme.service.BanqueEchangeService;
 import laFerme.service.BleService;
 import laFerme.service.CarotteService;
@@ -74,64 +75,13 @@ public class EchangeServlet extends AutowireServlet {
             banque.echange(p, Carotte.class, qteChevre, qteble, qteCarotte);
         }
 
-//        if (echangeContre.equals("ble")) {
-//            if (qteble % 4 == 0) {
-//                for (int i = 0; i <= qteble / 4; i++) {
-//                    Chevre chevre = new Chevre();
-//                    p.getListeChevre().add(chevre);
-//                    chevre.setPersonnage(p);
-//                    for(int j = 0; j<=qteble; j++){
-//                        bleService.delete(listeble.get(p.getListeble().size() - 1));
-//                    }
-//                }
-//            }
-//            
-//            if (qteble % 2 == 0) {
-//                for (int i = 0; i <= qteble / 2; i++) {
-//                    Carotte carotte = new Carotte();
-//                    p.getListeCarotte().add(carotte);
-//                    carotte.setPersonnage(p);
-//                }
-//            }
-//            
-//        }
-//        
-//        
-//        if (echangeContre.equals("carotte")) {
-//            
-//                for (int i = 0; i <= qteCarotte*2; i++) {
-//                    ble ble = new ble();
-//                    p.getListeble().add(ble);
-//                    ble.setPersonnage(p);
-//                }
-//            
-//            if (qteble % 2 == 0) {
-//                for (int i = 0; i <= qteble / 2; i++) {
-//                    Chevre chevre = new Chevre();
-//                    p.getListeChevre().add(chevre);
-//                    chevre.setPersonnage(p);
-//                }
-//            }
-//        }
-//        
-//        if (echangeContre.equals("chevre")) {
-//            
-//                for (int i = 0; i <= qteChevre*2; i++) {
-//                    Carotte carotte = new Carotte();
-//                    p.getListeCarotte().add(carotte);
-//                    carotte.setPersonnage(p);
-//                }
-//            
-//             
-//                for (int i = 0; i <= qteble*4 ; i++) {
-//                    ble ble = new ble();
-//                    p.getListeble().add(ble);
-//                    ble.setPersonnage(p);
-//                }
-//            }
         personnageService.save(p);
         config.calculPoints(p);
         req.setAttribute("monPersonnage", p);
+
+        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        Integer nb = mesChevresDispo.size() / 2;
+        req.setAttribute("nbCouple", nb);
 
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());

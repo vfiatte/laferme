@@ -16,7 +16,9 @@ import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
+import laFerme.enumeration.EtatChevreEnumeration;
 import laFerme.service.BleService;
+import laFerme.service.ChevreService;
 import laFerme.service.ConfigService;
 import laFerme.service.PersonnageService;
 import laFerme.spring.AutowireServlet;
@@ -37,6 +39,9 @@ public class DetailBlePlanteServlet extends AutowireServlet {
 
     @Autowired
     BleService bleService;
+    
+    @Autowired
+    ChevreService chevreService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,6 +50,10 @@ public class DetailBlePlanteServlet extends AutowireServlet {
         Utilisateur u = config.recupererUtilisateur(req);
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         Personnage p = personnageService.findOne(id);
+
+        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        Integer nb = mesChevresDispo.size() / 2;
+        req.setAttribute("nbCouple", nb);
 
         List<ble> listeBlePlante = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, id);
         req.setAttribute("blePlante", listeBlePlante);

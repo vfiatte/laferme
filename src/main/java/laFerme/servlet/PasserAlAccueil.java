@@ -12,12 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import laFerme.entity.Carotte;
+import laFerme.entity.Chevre;
 import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
+import laFerme.enumeration.EtatChevreEnumeration;
 import laFerme.service.BleService;
 import laFerme.service.CarotteService;
+import laFerme.service.ChevreService;
 import laFerme.service.ConfigService;
 import laFerme.service.PersonnageService;
 import laFerme.spring.AutowireServlet;
@@ -36,29 +39,30 @@ public class PasserAlAccueil extends AutowireServlet {
     CarotteService carotteService;
     @Autowired
     BleService bleService;
-    
+
     @Autowired
     PersonnageService personnageService;
+    @Autowired
+    ChevreService chevreService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Utilisateur u = config.recupererUtilisateur(req);
-        
-        
+
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         Personnage p = personnageService.findOne(id);
         req.setAttribute("monPersonnage", p);
-        
+
         config.calculPoints(p);
-        
-        
+        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        Integer nb = mesChevresDispo.size() / 2;
+        req.setAttribute("nbCouple", nb);
 
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         req.setAttribute("mesCarottesPlantees", mesCarottes.size());
         req.setAttribute("mesBlesPlantes", mesBles.size());
 
-        
         req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
 
     }

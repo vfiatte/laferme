@@ -17,6 +17,7 @@ import laFerme.entity.EtatEnumeration;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
+import laFerme.enumeration.EtatChevreEnumeration;
 import laFerme.service.BleService;
 import laFerme.service.CarotteService;
 import laFerme.service.ChevreService;
@@ -52,9 +53,13 @@ public class ListerChevreServlet extends AutowireServlet {
         List<Chevre> listeChevres = chevreService.findAllByPersonnageId(id);
         req.setAttribute("titre", "Votre troupeau de chevres");
         req.setAttribute("mesChevres", listeChevres);
-        
+
         config.calculPoints(p);
         req.setAttribute("monPersonnage", p);
+
+        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        Integer nb = mesChevresDispo.size() / 2;
+        req.setAttribute("nbCouple", nb);
 
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());

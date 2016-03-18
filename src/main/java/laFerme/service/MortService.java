@@ -44,6 +44,7 @@ public class MortService {
         List<Chevre> listeChevre = chevreService.findAllByPersonnageId(p.getId());
         for (Chevre c : listeChevre) {
             varDate.setTime(c.getDateManger());
+            System.out.println(c.getDateManger());
             varDate.add(Calendar.MINUTE, 12);
             if (varDate.before(ajd)) {
                 System.out.println("coucuo");

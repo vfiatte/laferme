@@ -20,9 +20,11 @@ import laFerme.entity.Fromage;
 import laFerme.entity.Personnage;
 import laFerme.entity.Utilisateur;
 import laFerme.entity.ble;
+import laFerme.enumeration.EtatChevreEnumeration;
 import laFerme.service.BleService;
 import laFerme.service.CarotteBleMethode;
 import laFerme.service.CarotteService;
+import laFerme.service.ChevreService;
 import laFerme.service.ConfigService;
 import laFerme.service.PersonnageService;
 import laFerme.spring.AutowireServlet;
@@ -45,10 +47,12 @@ public class PlanterServlet extends AutowireServlet {
     BleService bleService;
     @Autowired
     ConfigService config;
+    @Autowired
+    ChevreService chevreService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         Utilisateur u = config.recupererUtilisateur(req);
 
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
@@ -63,6 +67,10 @@ public class PlanterServlet extends AutowireServlet {
             carottebleMethode.planter(p, ble.class, qte);
         }
         req.setAttribute("monPersonnage", p);
+
+        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+        Integer nb = mesChevresDispo.size() / 2;
+        req.setAttribute("nbCouple", nb);
 
         List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
         List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
