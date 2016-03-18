@@ -20,6 +20,11 @@ img{
     background-color: #2a4735
 }
 
+.boutonaccueil{
+    width: 100px;
+    height: 100px;
+}
+
 .corps{
     background-color: #5a7163
 }

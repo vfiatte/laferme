@@ -22,7 +22,11 @@
     <body>
         <table class="vertical">
             <tr>
-                <td></td>
+                <td>
+                    <form method="get" action="homeservlet">
+                        <button type="submit"><img class="boutonaccueil" src="image/home-147127_960_720.png" alt=""/></button>
+                    </form>
+                </td>
                 <td>
                     <div class="titre">Bienvenu dans votre ferme, a vous de jouer, fermier en herbe !</div><br><br>
                 </td> 
@@ -38,9 +42,22 @@
                                     <img  src="image/fermier.png" alt=""/>
                                     ${monPersonnage.nom}
                                 </td>
+
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    Vie : 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <c:forEach var="i" begin="1" end="${monPersonnage.nbVie}">
+                                        <img class="coeur" src="image/love.png" alt=""/>
+                                    </c:forEach>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     Points : 
@@ -361,6 +378,9 @@
                 <thead>
                     <tr>
                         <td>
+                            Place
+                        </td>
+                        <td>
                             Nom
                         </td>
                         <td>
@@ -368,8 +388,13 @@
                         </td>
                     </tr>
                 </thead>
-                <c:forEach items="${classement}" var="monUtilisateur">
+                <%--<c:forEach items="${nbClass}" var="num">--%>
+                <c:forEach items="${classement}" var="monUtilisateur"  varStatus="index" end="${nbClass}">
+
                     <tr>
+                        <td>
+                            ${index.index + 1}
+                        </td>
                         <td>
                             ${monUtilisateur.login}
                         </td>
@@ -378,6 +403,7 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <%--</c:forEach>--%>
             </table>
         </c:when>
     </c:choose>

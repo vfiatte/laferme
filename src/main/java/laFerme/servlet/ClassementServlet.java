@@ -6,6 +6,7 @@
 package laFerme.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,14 +70,23 @@ public class ClassementServlet extends AutowireServlet {
         List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
         Integer nb = mesChevresDispo.size() / 2;
         req.setAttribute("nbCouple", nb);
-        System.out.println(nb);
         
         config.classementUtilisateurs(u);
+        List<Utilisateur> listeUtil = (List<Utilisateur>) utilisateurService.findAll();
+        int j = listeUtil.size();
         
+        List<Integer> listeNb = new ArrayList<>();
+        for (int i = 1; i<=j; i++){
+            listeNb.add(i);
+        }
+        
+        req.setAttribute("nbClass", listeNb.size());
+//        req.setAttribute("place", listeNb);
         req.setAttribute("valeur", "5");
         req.setAttribute("titre", "Classement");
         List<Utilisateur> listeUtilisateur = utilisateurService.findAllByOrderByPtsTotalDesc();
         req.setAttribute("classement", listeUtilisateur);
+        
         req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
     }
 
