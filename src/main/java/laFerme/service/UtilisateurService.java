@@ -5,6 +5,7 @@
  */
 package laFerme.service;
 
+import java.util.List;
 import laFerme.entity.Utilisateur;
 import org.springframework.data.repository.CrudRepository;
 
@@ -16,5 +17,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface UtilisateurService extends CrudRepository<Utilisateur, Long>{
     public Utilisateur findOneByLogin(String s);
     public Utilisateur findOneByEmail(String s);
+    public List<Utilisateur> findAllByOrderByPtsTotalDesc();
     
 }

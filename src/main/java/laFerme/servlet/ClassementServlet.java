@@ -23,6 +23,7 @@ import laFerme.service.CarotteService;
 import laFerme.service.ChevreService;
 import laFerme.service.ConfigService;
 import laFerme.service.PersonnageService;
+import laFerme.service.UtilisateurService;
 import laFerme.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -47,6 +48,9 @@ public class ClassementServlet extends AutowireServlet {
 
     @Autowired
     ChevreService chevreService;
+    
+    @Autowired
+    UtilisateurService utilisateurService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -70,8 +74,8 @@ public class ClassementServlet extends AutowireServlet {
 
         req.setAttribute("valeur", "5");
         req.setAttribute("titre", "Classement");
-        List<Personnage> listePersonnage = personnageService.findAllByOrderByNbDePointsDesc();
-        req.setAttribute("classement", listePersonnage);
+        List<Utilisateur> listeUtilisateur = utilisateurService.findAllByOrderByPtsTotalDesc();
+        req.setAttribute("classement", listeUtilisateur);
         req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
     }
 

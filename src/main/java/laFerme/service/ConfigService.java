@@ -46,7 +46,7 @@ public class ConfigService {
         List<Personnage> listePersonnage = u.getListepersonnages();
         for (Personnage p : listePersonnage){
             int pts = p.getNbDePoints();
-            
+            u.setPtsTotal(pts + p.getNbDePoints());
         }
         
     }

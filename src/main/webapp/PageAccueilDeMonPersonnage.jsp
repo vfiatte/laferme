@@ -50,14 +50,11 @@
                                 </td>
                             </tr>
                             <tr>
-                        <form method="get" action="ClassementServlet">
-                            <td colspan="2">
-                                Classement des utilisateurs :
-                            </td>
-                        </form>
-
-            </tr>
-            <tr>
+                                <td colspan="2">
+                                    Classement des utilisateurs :
+                                </td>
+                            </tr>
+                            <tr>
                         <form method="get" action="ClassementServlet">
                             <td colspan="2">
                                 <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
@@ -365,13 +362,13 @@
                         </td>
                     </tr>
                 </thead>
-                <c:forEach items="${classement}" var="monPersonnage">
+                <c:forEach items="${classement}" var="monUtlisateur">
                     <tr>
                         <td>
-                            ${monPersonnage.nom}
+                            ${monUtilisateur.login}
                         </td>
                         <td>
-                            ${monPersonnage.nbDePoints}
+                            ${monUtilisateur.ptsTotal}
                         </td>
                     </tr>
                 </c:forEach>
@@ -431,35 +428,35 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr>
                     <td>
                         <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
                         <button type="submit">Votre Cheptel</button>
                     </td>
                 </tr>
-            <form method="post" action="mettreCoupleServlet">
-                <tr>
-                    <td>
-                        Mettre 
-                        <select name="nbCouple">
-                            <c:forEach var="i" begin="0" end="${nbCouple}">
-                                <option>
-                                    ${i}
-                                </option>
-                            </c:forEach>
-                        </select>
-                        chevres en couple
-                    </td>
-                <tr>
-                    <td>
-                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                        <button type="submit">Copulage !</button>
-                    </td>
-                </tr>
-
-            </form>
-
-
+        </table>
+    </form>
+    <form method="post" action="mettreCoupleServlet">
+        <table class="tabledroite">
+            <tr>
+                <td>
+                    Mettre 
+                    <select name="nbCouple">
+                        <c:forEach var="i" begin="0" end="${nbCouple}">
+                            <option>
+                                ${i}
+                            </option>
+                        </c:forEach>
+                    </select>
+                    chevres en couple
+                </td>
+            <tr>
+                <td>
+                    <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                    <button type="submit">Copulage !</button>
+                </td>
+            </tr>
             </tbody>
         </table>
     </form>
