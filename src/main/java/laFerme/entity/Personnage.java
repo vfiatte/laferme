@@ -52,7 +52,7 @@ public class Personnage implements Serializable {
     private Long id;
     private String nom;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateNourrit;
+    private Date dateNourrit = new Date();
     private int nbDePoints;
     private int nbVie = 12;
     

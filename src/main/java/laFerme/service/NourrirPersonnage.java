@@ -126,6 +126,7 @@ public class NourrirPersonnage {
         }
 
         ressourceService.save(p.getRessource());
+        personnageService.save(p);
 //        p.setDateNourrit(ajd.getTime());
 
     }

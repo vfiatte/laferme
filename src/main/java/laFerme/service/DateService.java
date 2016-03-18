@@ -37,7 +37,7 @@ public class DateService {
             cueillir.progression(p);
             cueillir.recuperation(p);
             mort.mortChevre(p);
-//            mort.mortFermier(p);
+            mort.mortFermier(p);
         }
     
     }
