@@ -81,7 +81,6 @@ public class ClassementServlet extends AutowireServlet {
         }
         
         req.setAttribute("nbClass", listeNb.size());
-//        req.setAttribute("place", listeNb);
         req.setAttribute("valeur", "5");
         req.setAttribute("titre", "Classement");
         List<Utilisateur> listeUtilisateur = utilisateurService.findAllByOrderByPtsTotalDesc();

@@ -14,7 +14,7 @@
             var task = function(){
             document.location.reload();
             }
-            window.setTimeout(task, 1000000);
+            window.setTimeout(task, 60000);
         </script>
         <title>JSP Page</title>
         <c:import url = "_CSS.jsp"/>
@@ -28,7 +28,7 @@
                     </form>
                 </td>
                 <td>
-                    <div class="titre">Bienvenu dans votre ferme, a vous de jouer, fermier en herbe !</div><br><br>
+                    <div class="titre">Bienvenue dans votre ferme, a vous de jouer, fermier en herbe !</div><br><br>
                 </td> 
                 <td></td>
             </tr>
@@ -40,7 +40,7 @@
                             <tr>
                                 <td colspan="2">
                                     <img  src="image/fermier.png" alt=""/>
-                                    ${monPersonnage.nom}
+                                    <font si>${monPersonnage.nom}
                                 </td>
 
                             </tr>
@@ -467,13 +467,13 @@
                         <button type="submit">Votre Cheptel</button>
                     </td>
                 </tr>
-        </table>
+        </table><br>
     </form>
     <form method="post" action="mettreCoupleServlet">
         <table class="tabledroite">
             <tr>
                 <td>
-                    Mettre 
+                    Creer
                     <select name="nbCouple">
                         <c:forEach var="i" begin="0" end="${nbCouple}">
                             <option>
@@ -481,7 +481,7 @@
                             </option>
                         </c:forEach>
                     </select>
-                    chevres en couple
+                    couple(s) de chevres
                 </td>
             <tr>
                 <td>

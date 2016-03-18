@@ -13,7 +13,7 @@
         <c:import url="_CSS.jsp"/>
     </head>
 
-    <body>
+    <body align = center>
         <form method="post" action="AjoutUtilisateurServlet">
             <table>
                 <tr>
