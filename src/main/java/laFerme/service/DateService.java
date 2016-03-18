@@ -34,6 +34,7 @@ public class DateService {
 
         List<Personnage> listePersonnage = (List<Personnage>) personnageService.findAll();
         for (Personnage p : listePersonnage) {
+            cueillir.progression(p);
             cueillir.recuperation(p);
             mort.mortChevre(p);
 //            mort.mortFermier(p);

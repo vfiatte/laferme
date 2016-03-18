@@ -34,6 +34,7 @@ public class ble implements Serializable {
     private EtatEnumeration etat = EtatEnumeration.NONPLANTE;
     @Temporal(TemporalType.TIMESTAMP)
     private Date datePlantation = null;
+    private int nbVie = 0;
 
     public ble() {
     }
@@ -43,6 +44,14 @@ public class ble implements Serializable {
     public ble(Long id, EtatEnumeration etat) {
         this.id = id;
         this.etat = etat;
+    }
+
+    public int getNbVie() {
+        return nbVie;
+    }
+
+    public void setNbVie(int nbVie) {
+        this.nbVie = nbVie;
     }
 
     

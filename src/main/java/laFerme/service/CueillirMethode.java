@@ -43,8 +43,6 @@ public class CueillirMethode {
     @Autowired
     RessourceService ressourceService;
 
-
-
     public void recuperation(Personnage p) {
         List<Chevre> listeChevre = chevreService.findAllByPersonnageId(p.getId());
         List<Carotte> listeCarottePlante = p.getListeCarotte();
@@ -130,6 +128,127 @@ public class CueillirMethode {
                 bleService.delete(ble);
 
             }
+        }
+    }
+
+    public void progression(Personnage p) {
+        List<Carotte> listeCarottePlante = p.getListeCarotte();
+        List<ble> listeBlePlante = p.getListeble();
+        GregorianCalendar ajd = new GregorianCalendar();
+        Random r = new Random();
+
+        List<Carotte> listeCarottePlantee = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+        for (Carotte c : listeCarottePlantee) {
+            GregorianCalendar ajd1 = new GregorianCalendar();
+            GregorianCalendar ajd2 = new GregorianCalendar();
+            ajd1.setTime(c.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 1);
+            ajd2.setTime(c.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 2);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    c.setNbVie(1);
+                    carotteService.save(c);
+                }
+            }
+            ajd1.setTime(c.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 2);
+            ajd2.setTime(c.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 3);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    c.setNbVie(2);
+                    carotteService.save(c);
+                }
+            }
+            ajd1.setTime(c.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 3);
+            ajd2.setTime(c.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 4);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    c.setNbVie(3);
+                    carotteService.save(c);
+                }
+            }
+            ajd1.setTime(c.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 4);
+            ajd2.setTime(c.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 5);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    c.setNbVie(4);
+                    carotteService.save(c);
+                }
+            }
+            ajd1.setTime(c.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 5);
+            ajd2.setTime(c.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 6);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    c.setNbVie(5);
+                    carotteService.save(c);
+                }
+            }
+
+        }
+
+        List<ble> listeBlePlantee = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+        for (ble b : listeBlePlantee) {
+            GregorianCalendar ajd1 = new GregorianCalendar();
+            GregorianCalendar ajd2 = new GregorianCalendar();
+            ajd1.setTime(b.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 1);
+            ajd2.setTime(b.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 2);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    b.setNbVie(1);
+                    bleService.save(b);
+                }
+            }
+            ajd1.setTime(b.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 2);
+            ajd2.setTime(b.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 3);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    b.setNbVie(2);
+                    bleService.save(b);
+                }
+            }
+            ajd1.setTime(b.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 3);
+            ajd2.setTime(b.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 4);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    b.setNbVie(3);
+                    bleService.save(b);
+                }
+            }
+            ajd1.setTime(b.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 4);
+            ajd2.setTime(b.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 5);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    b.setNbVie(4);
+                    bleService.save(b);
+                }
+            }
+            ajd1.setTime(b.getDatePlantation());
+            ajd1.add(Calendar.MINUTE, 5);
+            ajd2.setTime(b.getDatePlantation());
+            ajd2.add(Calendar.MINUTE, 6);
+            if (ajd1.before(ajd)) {
+                if (ajd2.after(ajd)) {
+                    b.setNbVie(5);
+                    bleService.save(b);
+                }
+            }
+
         }
     }
 }

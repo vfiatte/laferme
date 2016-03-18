@@ -37,6 +37,7 @@ public class Carotte implements Serializable {
     private Date datePlantation = null;
     @Temporal(TemporalType.TIMESTAMP)
     private Date tempsRecolte = null;
+    private int nbVie = 0;
 
     public Carotte() {
     }
@@ -48,6 +49,16 @@ public class Carotte implements Serializable {
         this.etat = etat;
     }
 
+    public int getNbVie() {
+        return nbVie;
+    }
+
+    public void setNbVie(int nbVie) {
+        this.nbVie = nbVie;
+    }
+
+    
+    
     public Date getTempsRecolte() {
         return tempsRecolte;
     }
