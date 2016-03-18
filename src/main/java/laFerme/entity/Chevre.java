@@ -55,7 +55,7 @@ public class Chevre implements Serializable {
         this.id = id;
         this.dateFromage = dateFromage;
         this.dateNaissance = dateNaissance;
-        this.etat = etat;
+        this.etat = Etat;
     }
 
    
