@@ -55,6 +55,7 @@ public class NourrirChevreService {
 
         Map<Class, Integer> maMap = mapNutritionChevre();
         Integer nbaSupprimer = maMap.get(c);
+        chevre.setNbVie(12);
 
         if (c.equals(Carotte.class)) {
 
