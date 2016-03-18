@@ -162,11 +162,11 @@
 <td align = center class="tableMilieu"> 
     <c:choose>
         <c:when test="${valeur==1}">
-            <table>
+            <table class="tableCelluleCentre">
                 <h2>Votre Troupeau</h2>
                 <form method="post" action="NourirChevreServlet">
                     <thead>
-                        <tr>
+                        <tr class="tableCelluleCentre">
                             <td>
                                 Chevre
                             </td>
@@ -174,13 +174,10 @@
                                 Etat
                             </td>
                             <td>
-                                Derniere nutrition
-                            </td>
-                            <td>
                                 Nourrir ?
                             </td>
                             <td>
-                                Vie : <img src="image/love.png" alt=""/>
+                                Vie
                             </td>
 
                         </tr>
@@ -194,9 +191,6 @@
                                 ${maChevre.etat}
                             </td>
                             <td>
-                                ${maChevre.dateManger}
-                            </td>
-                            <td colspan="2">
                                 <input type="checkbox" name="nourirChevre" value="${maChevre.id}">
                             </td>
                             <td>
@@ -212,10 +206,11 @@
                         <td>
                         </td>
                         <td>
-                        </td>
-                        <td>
                             <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('ble')\" value="ble">Ble (x1)</label>
                             <label><input type="radio" name="typeNourriture" onclick=\"getAnswer('carotte')\" value="carotte">Carotte (x1)</label>
+                        </td>
+                        <td>
+
                         </td>
                         <td>
                         </td>
@@ -240,7 +235,7 @@
         <c:when test="${valeur==2}">
             <h2>Vos echanges</h2>
             <form method="post" action="EchangeServlet">
-                <table>
+                <table class="tableCelluleCentre">
                     <tr>
                         <td>
                             Echanger :
@@ -306,14 +301,14 @@
         </c:when>
         <c:when test="${valeur==3}">
             <h2>Votre champs de ble</h2>
-            <table>
+            <table class="tableCelluleCentre">
                 <thead>
                     <tr>
                         <td>
                             Ble
                         </td>
                         <td>
-                            Date de plantation
+                            Progression de la plantation
                         </td>
 
                     </tr>
@@ -324,7 +319,9 @@
                             Ble n ${monBle.id}
                         </td>
                         <td>
-                            ${monBle.datePlantation}
+                            <c:forEach var="i" begin="1" end="${monBle.nbVie}">
+                                <img class="coeur" src="image/icon_epi.png" alt=""/>
+                            </c:forEach>
                         </td>
                     </tr>
                 </c:forEach>
@@ -332,14 +329,14 @@
         </c:when>
         <c:when test="${valeur==4}">
             <h2>Votre champs de carottes</h2>
-            <table>
+            <table class="tableCelluleCentre">
                 <thead>
                     <tr>
                         <td>
                             Carottes
                         </td>
                         <td>
-                            Date de plantation
+                            Progression de la plantation
                         </td>
 
                     </tr>
@@ -350,7 +347,9 @@
                             Carotte n ${maCarotte.id}
                         </td>
                         <td>
-                            ${maCarotte.datePlantation}
+                            <c:forEach var="i" begin="1" end="${maCarotte.nbVie}">
+                                <img class="coeur" src="image/carrots_24.png" alt=""/>
+                            </c:forEach>
                         </td>
                     </tr>
                 </c:forEach>
@@ -358,7 +357,7 @@
         </c:when>
         <c:when test="${valeur==5}">
             <h1 class="titre">${titre}</h1>
-            <table>
+            <table class="tableCelluleCentre">
                 <thead>
                     <tr>
                         <td>

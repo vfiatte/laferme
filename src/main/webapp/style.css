@@ -16,7 +16,13 @@ img{
     height: 25px;
 }
 
+.ligne1{
+    background-color: #2a4735
+}
 
+.corps{
+    background-color: #5a7163
+}
 
 .tablegauche{
     border-style: solid;
@@ -32,6 +38,11 @@ img{
     border-color: green;
     background-color: #b9e4ba;
     vertical-align:top;
+}
+
+.tableCelluleCentre{
+    border-style: solid;
+   
 }
 
 .tableMilieu{

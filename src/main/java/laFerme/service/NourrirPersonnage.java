@@ -66,7 +66,7 @@ public class NourrirPersonnage {
                     
                 } else {
                     compteur = compteur + 1;
-                    List<Carotte> listCarotte = p.getListeCarotte();
+                    List<Carotte> listCarotte = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, p.getId());
                     Carotte carotte = listCarotte.get(listCarotte.size() - 1);
                     carotteService.delete(carotte);
                     p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
@@ -82,7 +82,7 @@ public class NourrirPersonnage {
                     return;
                 } else {
                     compteur = compteur + 1;
-                    List<ble> listBle = p.getListeble();
+                    List<ble> listBle = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, p.getId());
                     ble blee = listBle.get(listBle.size() - 1);
                     bleService.delete(blee);
                 }
