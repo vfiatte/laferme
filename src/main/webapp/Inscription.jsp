@@ -12,7 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <c:import url="_CSS.jsp"/>
     </head>
-    <c:import url="_TITRE.jsp"/>
 
     <body>
         <form method="post" action="AjoutUtilisateurServlet">

@@ -44,10 +44,14 @@ public class ConfigService {
     
     public void classementUtilisateurs(Utilisateur u){
         List<Personnage> listePersonnage = u.getListepersonnages();
+        int var = u.getPtsTotal();
         for (Personnage p : listePersonnage){
             int pts = p.getNbDePoints();
-            u.setPtsTotal(pts + p.getNbDePoints());
+            var = var + pts;
+           
         }
+         u.setPtsTotal(var);
+         utilisateurService.save(u);
         
     }
 

@@ -15,8 +15,6 @@
         <c:import url="_CSS.jsp"/>
     </head>
     <body>
-        <c:import url="_TITRE.jsp"/> 
-        <c:import url="_MENU.jsp"/>
         <div class="contenu">
             <h1>Creer Votre Personnage : </h1>
             <form method="post" action="creerunpersonnage">

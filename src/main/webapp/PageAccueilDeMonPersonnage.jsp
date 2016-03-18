@@ -119,6 +119,7 @@
     </form>
     <br><br>
     <table class="tablegauche">
+
         <thead>
             <tr>
                 <td colspan="3">
@@ -158,10 +159,11 @@
     </tbody>
 </table>
 </td>
-<td class="tableMilieu"> 
+<td align = center class="tableMilieu"> 
     <c:choose>
         <c:when test="${valeur==1}">
             <table>
+                <h2>Votre Troupeau</h2>
                 <form method="post" action="NourirChevreServlet">
                     <thead>
                         <tr>
@@ -199,7 +201,7 @@
                             </td>
                             <td>
                                 <c:forEach var="i" begin="1" end="${maChevre.nbVie}">
-                                    <img src="image/love.png" alt=""/>
+                                    <img class="coeur" src="image/love.png" alt=""/>
                                 </c:forEach>
                             </td>
                         </tr>
@@ -303,6 +305,7 @@
             </form>
         </c:when>
         <c:when test="${valeur==3}">
+            <h2>Votre champs de ble</h2>
             <table>
                 <thead>
                     <tr>
@@ -328,6 +331,7 @@
             </table>
         </c:when>
         <c:when test="${valeur==4}">
+            <h2>Votre champs de carottes</h2>
             <table>
                 <thead>
                     <tr>
@@ -353,6 +357,7 @@
             </table>
         </c:when>
         <c:when test="${valeur==5}">
+            <h1 class="titre">${titre}</h1>
             <table>
                 <thead>
                     <tr>
@@ -364,7 +369,7 @@
                         </td>
                     </tr>
                 </thead>
-                <c:forEach items="${classement}" var="monUtlisateur">
+                <c:forEach items="${classement}" var="monUtilisateur">
                     <tr>
                         <td>
                             ${monUtilisateur.login}

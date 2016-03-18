@@ -70,8 +70,9 @@ public class ClassementServlet extends AutowireServlet {
         Integer nb = mesChevresDispo.size() / 2;
         req.setAttribute("nbCouple", nb);
         System.out.println(nb);
-//        req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
-
+        
+        config.classementUtilisateurs(u);
+        
         req.setAttribute("valeur", "5");
         req.setAttribute("titre", "Classement");
         List<Utilisateur> listeUtilisateur = utilisateurService.findAllByOrderByPtsTotalDesc();
