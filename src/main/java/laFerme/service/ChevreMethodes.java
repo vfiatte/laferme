@@ -32,18 +32,24 @@ public class ChevreMethodes {
     @Autowired
     RessourceService ressourceService;
 
-    public void AccouplementChevre(Personnage p) {
+    public void AccouplementChevre(Long id, int nb) {
 
         GregorianCalendar ajd = new GregorianCalendar();
+        List<Chevre> listeChevreDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, id);
 
-        int taille = p.getListeChevre().size();
-        List<Chevre> listeChevre = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
-        if (listeChevre.size() > 1) {
-            for (Chevre chevre : listeChevre) {
-                chevre.setEtat(EtatChevreEnumeration.ENCEINTE);
-                chevre.setDateNaissance(ajd.getTime());
-                chevreService.save(chevre);
-                return;
+
+        if (nb > 0) {
+            for (int i = 1; i <= nb; i++) {
+                listeChevreDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, id);
+                Chevre c = listeChevreDispo.get(1);
+                Chevre c2 = listeChevreDispo.get(2);
+                c.setEtat(EtatChevreEnumeration.ENCEINTE);
+                c2.setEtat(EtatChevreEnumeration.ENCEINTE);
+                c.setDateNaissance(ajd.getTime());
+                c2.setDateNaissance(ajd.getTime());
+                chevreService.save(c);
+                chevreService.save(c2);
+                
             }
         }
 
