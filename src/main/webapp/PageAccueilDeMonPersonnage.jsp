@@ -198,7 +198,9 @@
                                 <input type="checkbox" name="nourirChevre" value="${maChevre.id}">
                             </td>
                             <td>
-                                <input type="checkbox" name="mettreEnCouple" value="${maChevre.id}">
+                                <c:forEach var="i" begin="1" end="${maChevre.nbVie}">
+                                    <img src="image/love.png" alt=""/>
+                                </c:forEach>
                             </td>
                         </tr>
                     </c:forEach>

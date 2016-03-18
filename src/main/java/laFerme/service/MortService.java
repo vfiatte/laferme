@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import laFerme.entity.Chevre;
 import laFerme.entity.Personnage;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,6 @@ public class MortService {
     ChevreService chevreService;
 
     GregorianCalendar ajd = new GregorianCalendar();
-    GregorianCalendar ajdbis = new GregorianCalendar();
     GregorianCalendar varDate = new GregorianCalendar();
 
     public void mortFermier(Personnage p) {
@@ -52,12 +52,94 @@ public class MortService {
                 chevreService.delete(c);
                 p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() - 1);
             }
-            ajdbis.setTime(c.getDateManger());
-            
-//            if () {
-                
+            GregorianCalendar ajd1 = new GregorianCalendar();
+            GregorianCalendar ajd2 = new GregorianCalendar();
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 1);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 2);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(11);
+                chevreService.save(c);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 2);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 3);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(10);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 3);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 4);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(9);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 4);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 5);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(8);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 5);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 6);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(7);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 6);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 7);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(6);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 7);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 8);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(5);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 7);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 8);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(5);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 8);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 9);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(4);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 9);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 10);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(3);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 10);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 11);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(2);
+            }
+            ajd1.setTime(c.getDateManger());
+            ajd1.add(Calendar.MINUTE, 11);
+            ajd2.setTime(c.getDateManger());
+            ajd2.add(Calendar.MINUTE, 12);
+            if (ajd1.before(ajd) && ajd2.after(ajd)) {
+                c.setNbVie(1);
             }
         }
-//        ressourceService.save(p.getRessource());
+        ressourceService.save(p.getRessource());
     }
-//}
+}
