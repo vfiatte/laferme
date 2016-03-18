@@ -8,6 +8,8 @@ package laFerme.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +45,8 @@ public class Chevre implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNaissance = new Date();
     
-    private EtatChevreEnumeration etat;
+    @Enumerated(EnumType.STRING)
+    private EtatChevreEnumeration etat = EtatChevreEnumeration.DISPONIBLE;
 
     public Chevre() {
     }
@@ -52,7 +55,7 @@ public class Chevre implements Serializable {
         this.id = id;
         this.dateFromage = dateFromage;
         this.dateNaissance = dateNaissance;
-        this.etat = DISPONIBLE;
+        this.etat = etat;
     }
 
    

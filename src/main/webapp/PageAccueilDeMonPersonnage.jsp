@@ -52,8 +52,16 @@
                             <tr>
                         <form method="get" action="ClassementServlet">
                             <td colspan="2">
+                                Classement des utilisateurs :
+                            </td>
+                        </form>
+
+            </tr>
+            <tr>
+                        <form method="get" action="ClassementServlet">
+                            <td colspan="2">
                                 <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                                <button type="submit">Acceder au classement</button>
+                                <button type="submit">Acceder</button>
                             </td>
                         </form>
 
@@ -426,9 +434,32 @@
                 <tr>
                     <td>
                         <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
-                        <input type="submit">
+                        <button type="submit">Votre Cheptel</button>
                     </td>
                 </tr>
+            <form method="post" action="mettreCoupleServlet">
+                <tr>
+                    <td>
+                        Mettre 
+                        <select name="nbCouple">
+                            <c:forEach var="i" begin="0" end="${nbCouple}">
+                                <option>
+                                    ${i}
+                                </option>
+                            </c:forEach>
+                        </select>
+                        chevres en couple
+                    </td>
+                <tr>
+                    <td>
+                        <input type="hidden" name="idPersonnage" value="${monPersonnage.id}">
+                        <button type="submit">Copulage !</button>
+                    </td>
+                </tr>
+
+            </form>
+
+
             </tbody>
         </table>
     </form>

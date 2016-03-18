@@ -34,6 +34,7 @@ public class Utilisateur implements Serializable {
     private String login;
     private String mdp;
     private String email;
+    private Integer ptsTotal = 0;
 
     public Utilisateur() {
     }
@@ -55,6 +56,14 @@ public class Utilisateur implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getPtsTotal() {
+        return ptsTotal;
+    }
+
+    public void setPtsTotal(Integer ptsTotal) {
+        this.ptsTotal = ptsTotal;
     }
 
     

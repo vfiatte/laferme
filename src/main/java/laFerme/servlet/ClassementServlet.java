@@ -65,6 +65,7 @@ public class ClassementServlet extends AutowireServlet {
         List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
         Integer nb = mesChevresDispo.size() / 2;
         req.setAttribute("nbCouple", nb);
+        System.out.println(nb);
 //        req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
 
         req.setAttribute("valeur", "5");

@@ -5,9 +5,9 @@
  */
 package laFerme.service;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import laFerme.entity.Personnage;
-import laFerme.entity.Ressource;
 import laFerme.entity.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +39,15 @@ public class ConfigService {
         
         p.setNbDePoints(totalPoints);
         personnageService.save(p);
+        
+    }
+    
+    public void classementUtilisateurs(Utilisateur u){
+        List<Personnage> listePersonnage = u.getListepersonnages();
+        for (Personnage p : listePersonnage){
+            int pts = p.getNbDePoints();
+            
+        }
         
     }
 
