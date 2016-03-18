@@ -37,7 +37,129 @@ public class MortService {
         varDate.setTime(p.getDateNourrit());
         varDate.add(Calendar.MINUTE, 12);
         if (varDate.before(ajd)) {
-            personnageService.delete(p);
+//            personnageService.delete(p);
+        }
+        GregorianCalendar ajd1 = new GregorianCalendar();
+        GregorianCalendar ajd2 = new GregorianCalendar();
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 1);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 2);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(11);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 2);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 3);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(10);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 3);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 4);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(9);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 4);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 5);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(8);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 5);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 6);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(7);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 6);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 7);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(6);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 7);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 8);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(5);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 7);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 8);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(5);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 8);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 9);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(4);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 9);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 10);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(3);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 10);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 11);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(2);
+                personnageService.save(p);
+            }
+        }
+        ajd1.setTime(p.getDateNourrit());
+        ajd1.add(Calendar.MINUTE, 11);
+        ajd2.setTime(p.getDateNourrit());
+        ajd2.add(Calendar.MINUTE, 12);
+        if (ajd1.before(ajd)) {
+            if (ajd2.after(ajd)) {
+                p.setNbVie(1);
+                personnageService.save(p);
+            }
         }
     }
 

@@ -69,6 +69,7 @@ public class Initialiser {
             chevreService.save(chevre);
         }
 
+        
         ressource.setRessourceBle(3);
         ressource.setRessourceCarotte(3);
         ressource.setRessourceChevre(3);
@@ -76,11 +77,9 @@ public class Initialiser {
         ressource.setPersonnage(personnage);
         personnage.setRessource(ressource);
         ressourceService.save(ressource);
-//        personnageService.save(personnage);
+        personnageService.save(personnage);
 //        utilisateurService.save(u);
-        for (Carotte carotte : personnage.getListeCarotte()) {
-            System.out.println(carotte.getId());
-        }
+
 
     }
 

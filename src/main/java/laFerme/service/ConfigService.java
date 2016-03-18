@@ -31,6 +31,7 @@ public class ConfigService {
     }
     
     public void calculPoints(Personnage p){
+        System.out.println(p.getNom());
         int pointBle = p.getRessource().getRessourceBle()*1;
         int pointCarotte = p.getRessource().getRessourceCarotte()*2;
         int pointChevre = p.getRessource().getRessourceChevre()*4;

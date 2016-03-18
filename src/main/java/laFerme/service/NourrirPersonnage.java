@@ -57,22 +57,23 @@ public class NourrirPersonnage {
 
         Map<Class, Integer> maMap = mapNutritionFermier();
         Integer nbaSupprimer = maMap.get(c);
-        
+
         if (c.equals(Carotte.class)) {
 
             for (int i = 1; i <= nbaSupprimer; i++) {
                 if (p.getRessource().getRessourceCarotte() == 0) {
                     return;
-                    
+
                 } else {
                     compteur = compteur + 1;
                     List<Carotte> listCarotte = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, p.getId());
                     Carotte carotte = listCarotte.get(listCarotte.size() - 1);
                     carotteService.delete(carotte);
                     p.getRessource().setRessourceCarotte(p.getRessource().getRessourceCarotte() - 1);
+                    p.setDateNourrit(ajd.getTime());
+                    p.setNbVie(12);
                 }
             }
-            
 
         }
 
@@ -85,6 +86,8 @@ public class NourrirPersonnage {
                     List<ble> listBle = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.NONPLANTE, p.getId());
                     ble blee = listBle.get(listBle.size() - 1);
                     bleService.delete(blee);
+                    p.setDateNourrit(ajd.getTime());
+                    p.setNbVie(12);
                 }
             }
             p.getRessource().setRessourceBle(p.getRessource().getRessourceBle() - compteur);
@@ -100,6 +103,8 @@ public class NourrirPersonnage {
                     List<Chevre> listChevre = p.getListeChevre();
                     Chevre chevre = listChevre.get(listChevre.size() - 1);
                     chevreService.delete(chevre);
+                    p.setDateNourrit(ajd.getTime());
+                    p.setNbVie(12);
                 }
             }
             p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() - compteur);
@@ -121,7 +126,7 @@ public class NourrirPersonnage {
         }
 
         ressourceService.save(p.getRessource());
-        p.setDateNourrit(ajd.getTime());
+//        p.setDateNourrit(ajd.getTime());
 
     }
 

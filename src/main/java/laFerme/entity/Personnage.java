@@ -54,6 +54,7 @@ public class Personnage implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNourrit;
     private int nbDePoints;
+    private int nbVie = 12;
     
     
     public Personnage() {
@@ -65,6 +66,16 @@ public class Personnage implements Serializable {
         this.dateNourrit = dateNourrit;
     }
 
+    public int getNbVie() {
+        return nbVie;
+    }
+
+    public void setNbVie(int nbVie) {
+        this.nbVie = nbVie;
+    }
+
+    
+    
     public Integer getNbDePoints() {
         return nbDePoints;
     }

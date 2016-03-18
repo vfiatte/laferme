@@ -61,21 +61,23 @@ public class CreerUnPersonnageServlet extends AutowireServlet {
         String nom = req.getParameter("nom");
         init.CreationInitialisation(u, nom);
 
-        Personnage p = personnageService.findOneByNom(nom);
-
-        config.calculPoints(p);
-        req.setAttribute("monPersonnage", p);
-
-        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
-        Integer nb = mesChevresDispo.size() / 2;
-        req.setAttribute("nbCouple", nb);
-
-        List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
-        List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
-        req.setAttribute("mesCarottesPlantees", mesCarottes.size());
-        req.setAttribute("mesBlesPlantes", mesBles.size());
-
-        req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
+//        Personnage p = personnageService.findOneByNom(nom);
+//
+//        config.calculPoints(p);
+        req.setAttribute("mesPersonnage", u.getListepersonnages());
+        req.getRequestDispatcher("CreationPersonnage.jsp").include(req, resp);
+//        req.setAttribute("monPersonnage", p);
+//
+//        List<Chevre> mesChevresDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, p.getId());
+//        Integer nb = mesChevresDispo.size() / 2;
+//        req.setAttribute("nbCouple", nb);
+//
+//        List<Carotte> mesCarottes = carotteService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+//        List<ble> mesBles = bleService.findAllByEtatAndPersonnageId(EtatEnumeration.PLANTE, p.getId());
+//        req.setAttribute("mesCarottesPlantees", mesCarottes.size());
+//        req.setAttribute("mesBlesPlantes", mesBles.size());
+//
+//        req.getRequestDispatcher("PageAccueilDeMonPersonnage.jsp").include(req, resp);
 
     }
 
