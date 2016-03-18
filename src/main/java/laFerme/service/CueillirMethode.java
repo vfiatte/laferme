@@ -43,6 +43,8 @@ public class CueillirMethode {
     @Autowired
     RessourceService ressourceService;
 
+
+
     public void recuperation(Personnage p) {
         List<Chevre> listeChevre = chevreService.findAllByPersonnageId(p.getId());
         List<Carotte> listeCarottePlante = p.getListeCarotte();

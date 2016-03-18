@@ -30,6 +30,7 @@ public class MortService {
     ChevreService chevreService;
 
     GregorianCalendar ajd = new GregorianCalendar();
+    GregorianCalendar ajdbis = new GregorianCalendar();
     GregorianCalendar varDate = new GregorianCalendar();
 
     public void mortFermier(Personnage p) {
@@ -49,9 +50,14 @@ public class MortService {
             if (varDate.before(ajd)) {
                 System.out.println("coucuo");
                 chevreService.delete(c);
-                p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre()- 1);
+                p.getRessource().setRessourceChevre(p.getRessource().getRessourceChevre() - 1);
+            }
+            ajdbis.setTime(c.getDateManger());
+            
+//            if () {
+                
             }
         }
-        ressourceService.save(p.getRessource());
+//        ressourceService.save(p.getRessource());
     }
-}
+//}

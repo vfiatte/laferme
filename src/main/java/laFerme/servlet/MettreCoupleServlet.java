@@ -62,6 +62,8 @@ public class MettreCoupleServlet extends AutowireServlet {
 
         Long id = Long.parseLong(req.getParameter("idPersonnage"));
         int nbre = Integer.parseInt(req.getParameter("nbCouple"));
+        
+        System.out.println("coucouuuuuuuuuuuuuuuuuuuuUUUUUUUUUUUUUUUUUUU");
 
         chevreMethodes.AccouplementChevre(id, nbre);
 

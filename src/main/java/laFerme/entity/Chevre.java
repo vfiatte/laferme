@@ -47,6 +47,8 @@ public class Chevre implements Serializable {
     
     @Enumerated(EnumType.STRING)
     private EtatChevreEnumeration etat = EtatChevreEnumeration.DISPONIBLE;
+    
+    private int nbVie = 12;
 
     public Chevre() {
     }
@@ -56,6 +58,14 @@ public class Chevre implements Serializable {
         this.dateFromage = dateFromage;
         this.dateNaissance = dateNaissance;
         this.etat = Etat;
+    }
+
+    public int getNbVie() {
+        return nbVie;
+    }
+
+    public void setNbVie(int nbVie) {
+        this.nbVie = nbVie;
     }
 
    

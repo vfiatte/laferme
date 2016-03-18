@@ -178,7 +178,7 @@
                                 Nourrir ?
                             </td>
                             <td>
-                                Mettre en couple
+                                Vie : <img src="image/love.png" alt=""/>
                             </td>
 
                         </tr>

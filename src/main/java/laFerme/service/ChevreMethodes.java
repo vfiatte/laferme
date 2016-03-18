@@ -36,13 +36,13 @@ public class ChevreMethodes {
 
         GregorianCalendar ajd = new GregorianCalendar();
         List<Chevre> listeChevreDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, id);
-
+                System.out.println("coucouuuuuuuuuuuuuuuuuuuUUUUUUUUUU");
 
         if (nb > 0) {
             for (int i = 1; i <= nb; i++) {
                 listeChevreDispo = chevreService.findAllByEtatAndPersonnageId(EtatChevreEnumeration.DISPONIBLE, id);
-                Chevre c = listeChevreDispo.get(1);
-                Chevre c2 = listeChevreDispo.get(2);
+                Chevre c = listeChevreDispo.get(0);
+                Chevre c2 = listeChevreDispo.get(1);
                 c.setEtat(EtatChevreEnumeration.ENCEINTE);
                 c2.setEtat(EtatChevreEnumeration.ENCEINTE);
                 c.setDateNaissance(ajd.getTime());
